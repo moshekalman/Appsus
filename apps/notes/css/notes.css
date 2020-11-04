@@ -15,7 +15,7 @@ textarea, input{
 
 .note-text {
     outline: none;
-    width: 25rem;
+    width: 100%;
 }
 
 .add-note {

@@ -2,9 +2,8 @@ import homePage from './pages/home-page.cmp.js';
 import notesApp from '../apps/notes/cmps/notes-app.cmp.js';
 import noteText from '../apps/notes/cmps/note-text.cmp.js';
 import emailApp from '../apps/email/email-app.cmp.js'
-import emailListCmp from '../apps/email/pages/email-list.cmp.js';
-import emailPreviewCmp from '../apps/email/'
-
+import emailList from '../apps/email/pages/email-list.cmp.js';
+import emailDetails from '../apps/email/pages/email-details.cmp.js'
 
 // import notesApp from
 
@@ -16,12 +15,12 @@ const myRoutes = [{
         path: '/email',
         component: emailApp,
         children: [{
-                path: ':list?',
-                component: emailListCmp
+                path: 'list',
+                component: emailList
             },
             {
-                path: 'preview',
-                component: emailPreviewCmp
+                path: ':emailId',
+                component: emailDetails
             },
         ]
     },
