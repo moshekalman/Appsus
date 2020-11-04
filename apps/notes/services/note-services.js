@@ -1,4 +1,45 @@
 
-import {storageService} from '../../../js/services/storage-service.js'
+import { storageService } from '../../../js/services/storage-service.js';
 
-var notes = _getNotes();
+export const noteService = {
+    getNotes,
+    addNote,
+    deleteNote
+};
+
+const NOTES_KEY = 'notesDB';
+var gNotes = _getNotes();
+
+function _getNotes() {
+    if (storageService.loadFromLocalStorage(NOTES_KEY)) return storageService.loadFromLocalStorage(NOTES_KEY);
+    else return [];
+}
+
+function getNotes() {
+    return Promise.resolve(gNotes);
+}
+
+function addNote(note) {
+    note.id = _makeId();
+    gNotes.push(note);
+    storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+}
+
+function deleteNote(id) {
+    const noteIdx = gNotes.findIndex(note => note.id === id);
+    console.log(noteIdx)
+    if (noteIdx === -1) return;
+    gNotes.splice(noteIdx, 1);
+    storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+}
+
+
+function _makeId(length = 5) {
+    var txt = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < length; i++) {
+        txt += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return txt;
+}
+
