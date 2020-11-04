@@ -1,5 +1,6 @@
 @import './cmps/header.css';
 @import './cmps/footer.css';
+@import '../apps/notes/css/notes.css';
 
 @font-face{
     font-family: Anton;

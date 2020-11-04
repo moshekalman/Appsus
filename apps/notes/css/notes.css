@@ -1,0 +1,25 @@
+
+@font-face {
+    font-family: fa;
+    src: url(../assets/fonts/fa-regular-400.ttf);
+}
+
+
+textarea, input{
+    margin: 0;
+    padding: 10px;
+    font-family: OpenSansL;
+    border: none;
+    overflow: hidden;
+}
+
+.note-text {
+    outline: none;
+    width: 25rem;
+}
+
+.add-note {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 20px;
+}

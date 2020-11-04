@@ -1,6 +1,7 @@
 import homePage from './pages/home-page.cmp.js';
 // import emailApp from
-// import notesApp from
+import notesApp from '../apps/notes/cmps/notes-app.cmp.js';
+import noteText from '../apps/notes/cmps/note-text.cmp.js';
 
 const myRoutes = [
     {
@@ -13,7 +14,13 @@ const myRoutes = [
     },
     {
         path: '/notes',
-        // component: notesApp
+        component: notesApp,
+        children: [
+            {
+                path: ':text?',
+                component: noteText
+            }
+        ]
     },
 ];
 
