@@ -4,7 +4,9 @@ import { storageService } from '../../../js/services/storage-service.js';
 export const noteService = {
     getNotes,
     addNote,
-    deleteNote
+    deleteNote,
+    getNoteById,
+    editNoteById
 };
 
 const NOTES_KEY = 'notesDB';
@@ -27,7 +29,7 @@ function addNote(note) {
 
 function deleteNote(id) {
     const noteIdx = gNotes.findIndex(note => note.id === id);
-    console.log(noteIdx)
+    console.log(noteIdx);
     if (noteIdx === -1) return;
     gNotes.splice(noteIdx, 1);
     storageService.saveToLocalStorage(NOTES_KEY, gNotes);
@@ -41,5 +43,15 @@ function _makeId(length = 5) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return txt;
+}
+
+function getNoteById(id) {
+    return Promise.resolve(gNotes.find(note => note.id === id));
+}
+
+function editNoteById(id, { info }) {
+    getNoteById(id)
+        .then(res => res.info = info);
+    storageService.saveToLocalStorage(NOTES_KEY, gNotes);
 }
 
