@@ -1,14 +1,37 @@
+@import './cmps/header.css';
+
+@font-face{
+    font-family: Anton;
+    src: url(../assets/fonts/Anton-Regular.ttf)
+}
+
+@font-face{
+    font-family: OpenSans;
+    src: url(../assets/fonts/OpenSans-Regular.ttf)
+}
+
 *{
     box-sizing: border-box;
 }
 
+html{
+    font-size: 16px;
+    font-family: OpenSans;
+}
+
 body{
     margin: 0;
+    background-color: #6CDAEE;
 }
 
 .container{
     max-width: 1280px;
     margin: 0 auto;
+    padding: 20px;
+}
+
+.colors{
+    color:#10E7DC #0074E1 #1B9CE5 #6CDAEE #F79E02 
 }
 
 /* Helpers */
@@ -30,4 +53,11 @@ body{
 }
 .flex.space-between{
     justify-content: space-between;
+}
+
+/* list */
+
+.clean-list{
+    list-style-type: none;
+    text-decoration: none;
 }

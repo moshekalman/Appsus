@@ -2,9 +2,9 @@
 export default {
     name: `header-cmp`,
     template: `
-    <section class="header-box">
-        <div class="container header-container flex space-between">
-            <h1 class="logo">Appsus</h1>
+    <section class="main-header">
+        <div class="container header-container flex space-between align-center">
+            <h1><router-link class="logo" to="/" exact>Appsus</router-link></h1>
             <nav class="main-nav">
                 <ul class="clean-list flex space-between">
                     <li><router-link to="/" exact>Home</router-link></li>
