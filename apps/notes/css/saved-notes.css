@@ -5,7 +5,7 @@
 .saved-note {
     color: rgb(75, 75, 75);
     background-color: rgb(255, 255, 255);
-    padding: 15px;
+    padding: 20px;
     width: fit-content;
     max-width: 300px;
     height: fit-content;
@@ -32,4 +32,17 @@
 .saved-text {
     max-width: 200px;
     height: fit-content;
+}
+
+.relative-label{
+    position: relative;
+}
+
+.color-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.5rem;
+    opacity: 0;
+    z-index: -1;
 }

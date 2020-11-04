@@ -11,11 +11,11 @@ export default {
         </div>
         <section v-if="notes" class="notes-box">
             <h2 v-if="notes.length" class="">Saved Notes</h2>
-            <div class="notes-container flex align-center">
-                <div class="saved-note flex column align-center" v-for="note in notes" :key="note.id">
-                    <saved-note :note="note" @onDeleteEv="onDeleteNote" @onEditEv="onEditNote"> </saved-note>
+                <div class="notes-container flex align-center" >
+                    <saved-note @emitColorChange="onChangeColor" @emitBgcChange="onChangeBgColor" :note="note" 
+                    @onDeleteEv="onDeleteNote" @onEditEv="onEditNote" 
+                    v-for="note in notes" :key="note.id"> </saved-note>
                 </div>
-            </div>
         </section>
         <edit-note @onEdit="closeEdit" v-if="currId" :noteId="currId"></edit-note>
     </section>
@@ -38,6 +38,12 @@ export default {
         },
         closeEdit() {
             this.currId = null;
+        },
+        onChangeBgColor(bgcNoteObj){
+            noteService.changeBgColor(bgcNoteObj)
+        },
+        onChangeColor(colorNoteObj){
+            noteService.changeColor(colorNoteObj)
         }
     },
     components: {

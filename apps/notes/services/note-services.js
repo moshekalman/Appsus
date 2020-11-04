@@ -6,7 +6,9 @@ export const noteService = {
     addNote,
     deleteNote,
     getNoteById,
-    editNoteById
+    editNoteById,
+    changeBgColor,
+    changeColor
 };
 
 const NOTES_KEY = 'notesDB';
@@ -51,7 +53,25 @@ function getNoteById(id) {
 
 function editNoteById(id, { info }) {
     getNoteById(id)
-        .then(res => res.info = info);
-    storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+        .then(res => {
+            res.info = info;
+            storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+        });
+}
+
+function changeBgColor({ bgc, id }) {
+    getNoteById(id)
+        .then(res => {
+            (res.style) ? res.style.bgc = bgc : res.style = { bgc };
+            storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+        });
+}
+
+function changeColor({ color, id }) {
+    getNoteById(id)
+        .then(res => {
+            (res.style) ? res.style.color = color : res.style = { color };
+            storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+        });
 }
 
