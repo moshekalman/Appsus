@@ -1,19 +1,19 @@
 .logo {
-    font-family: Anton;
+    font-family: OpenSansB;
     font-size: 2rem;
     color: #F79E02;
     cursor: pointer;
     text-decoration: none;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.05rem;
 }
 
 .logo::after {
     content: ".";
-    color: #1B9CE5;
+    color: #10E7DC;
 }
 
 .main-header {
-    background-color: #10E7DC;
+    background-color: #1B9CE5;
 }
 
 .main-nav a {
@@ -42,8 +42,12 @@
     height: 100%;
 }
 
-.main-nav li:not(:last-child) {
+.main-nav li{
     border-right: 2px solid #F79E02;
+}
+
+.main-nav li:first-child{
+    border-left: 2px solid #F79E02;
 }
 
 .main-nav li:hover {
