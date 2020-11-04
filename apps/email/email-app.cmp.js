@@ -28,8 +28,9 @@ export default {
     },
     computed: {
         emailsToShow() {
-            var emails = JSON.parse(JSON.stringify(this.emails))
+            var emails = this.emails
             if (this.showOnlySaved) {
+                console.log('check');
                 emails = []
                 this.emails.forEach(email => {
                     if (email.saved === true) {
@@ -53,7 +54,7 @@ export default {
         backToInbox() {
             this.showOnlySaved = false
             this.showOnlySent = false
-            this.$router.push('/email')
+                // this.$router.push('/email')
         },
         getEmailsAfterPromise() {
             emailService.getEmails().then((emails) => this.emails = emails)

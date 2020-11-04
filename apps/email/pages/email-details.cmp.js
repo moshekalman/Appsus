@@ -4,6 +4,7 @@ import { emailService } from '../services/email-service.js'
 export default {
     template: `
         <section v-if="email" class="email-datails">
+            <button @click="back">back</button>
             <header class="head-details">
                 <p>{{email.sender}}</p>
                 <p>{{email.dateAt}}</p>
@@ -19,6 +20,9 @@ export default {
         }
     },
     methods: {
+        back() {
+            this.$router.push('/email')
+        },
         loadEmail() {
             const id = this.$route.params.emailId
             emailService.getById(id)
