@@ -3,14 +3,14 @@ import emailAdd from './pages/email-add.cmp.js'
 import emailFilter from './cmps/email-filter.cmp.js'
 import emailNav from './cmps/email-nav.cmp.js'
 // import { myRouter } from '../../js/routes.js'
-import { emailSercive } from './services/email-service.js'
+import { emailService } from './services/email-service.js'
 
 export default {
     name: 'email-app',
     // router: myRouter,
     template: `
     <section class="email-app">
-        <email-nav @openAddEmail="isShowAddEmail = !isShowAddEmail" @openShowSaved="showOnlySaved = !showOnlySaved" @openShowSent="showOnlySent = !showOnlySent" />
+        <email-nav @openAddEmail="isShowAddEmail = !isShowAddEmail" @openShowSaved="showOnlySaved = true" @openShowSent="showOnlySent = true" @backToInbox="backToInbox" />
         <email-add v-if="isShowAddEmail" />
         <email-filter @doFilter="setFilter" />
         <email-list v-if="emails" :emails="emailsToShow" />
@@ -26,24 +26,29 @@ export default {
         }
     },
     computed: {
-        setFilterShowSaved() {
-
-        },
         emailsToShow() {
+            var emails = this.emails
+            if (this.showOnlySaved) {
+                emails = this.emails.map(email => email.saved === true)
+            }
             if (!this.filterBy) {
-                return this.emails;
+                return emails;
             }
             var emailsFilter = []
             const txt = this.filterBy.byWord.toLowerCase();
-            emailsFilter = this.emails.filter(email => {
+            emailsFilter = emails.filter(email => {
                 return (email.sender.toLowerCase().includes(txt) ||
                     email.content.toLowerCase().includes(txt))
             })
         }
     },
     methods: {
+        backToInbox() {
+            this.showOnlySaved = false
+            this.showOnlySent = false
+        },
         getEmailsAfterPromise() {
-            emailSercive.getEmails().then((emails) => this.emails = emails)
+            emailService.getEmails().then((emails) => this.emails = emails)
         },
         setFilter(filterBy) {
             this.filterBy = filterBy

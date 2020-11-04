@@ -2,8 +2,10 @@ const STORAGE_KEY = 'emailDB'
 const gEmails = _createEmails();
 import { storageService } from '../../../js/services/storage-service.js'
 
-export const emailSercive = {
-    getEmails
+export const emailService = {
+    getEmails,
+    remove,
+    getById
 }
 
 function _createEmails() {
@@ -23,8 +25,8 @@ function _createEmails() {
             sender: 'moshe',
             content: 'bye-bye',
             dateAt: '12:50',
-            readed: true,
-            saved: true
+            readed: false,
+            saved: false
         },
         {
             id: 333,
@@ -32,7 +34,7 @@ function _createEmails() {
             content: 'good morning!',
             dateAt: '10/04/2020',
             readed: false,
-            saved: true
+            saved: false
         }
     ]
     storageService.saveToLocalStorage(STORAGE_KEY, emails)
@@ -51,4 +53,22 @@ function _makeId(length = 5) {
 
 function getEmails() {
     return Promise.resolve(gEmails);
+}
+
+function remove(emailId) {
+    const idx = _getIdxById(emailId);
+    gEmails.splice(idx, 1)
+    storageService.saveToLocalStorage(STORAGE_KEY, gEmails)
+}
+
+function _getIdxById(id) {
+    return gEmails.findIndex(email => email.id === id)
+}
+
+function getById(id) {
+    console.log(id);
+    console.log(gEmails);
+    const email = gEmails.find(currEmail => currEmail.id === +id)
+    console.log(email);
+    return Promise.resolve(email)
 }

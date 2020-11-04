@@ -12,17 +12,16 @@ const myRoutes = [{
         component: homePage
     },
     {
+        path: '/email-details/:emailId',
+        component: emailDetails
+    },
+    {
         path: '/email',
         component: emailApp,
         children: [{
-                path: 'list',
-                component: emailList
-            },
-            {
-                path: ':emailId',
-                component: emailDetails
-            },
-        ]
+            path: 'list',
+            component: emailList
+        }, ]
     },
     {
         path: '/notes',

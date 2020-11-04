@@ -1,4 +1,3 @@
-// import { emailService } from '../services/email-service.js'
 import emailPreview from '../cmps/email-preview.cmp.js'
 
 export default {
@@ -16,11 +15,8 @@ export default {
     </section>
 `,
     methods: {
-        emitRemove(emailId) {
-            this.$emit('remove', emailId)
-        },
-        bookClicked(currBook) {
-            this.$router.push(`/book/${currBook.id}`)
+        emailClicked(currEmail) {
+            this.$router.push(`email-details/${currEmail.id}`)
         }
     },
     components: {
