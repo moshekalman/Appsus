@@ -12,8 +12,9 @@ export default {
     <section class="email-app">
         <email-nav @openAddEmail="isShowAddEmail = !isShowAddEmail" @openShowSaved="showOnlySaved = true" @openShowSent="showOnlySent = true" @backToInbox="backToInbox" />
         <email-add v-if="isShowAddEmail" />
-        <email-filter @doFilter="setFilter" />
-        <email-list v-if="emails" :emails="emailsToShow" />
+        <email-filter v-if="emails" @doFilter="setFilter" />
+        <router-view v-if="emails" :emails="emailsToShow" />
+        <!-- <email-list v-if="emails" :emails="emailsToShow" /> -->
     </section>
     `,
     data() {
@@ -29,7 +30,12 @@ export default {
         emailsToShow() {
             var emails = this.emails
             if (this.showOnlySaved) {
-                emails = this.emails.map(email => email.saved === true)
+                emails = []
+                this.emails.forEach(email => {
+                    if (email.saved === true) {
+                        emails.push(email)
+                    }
+                })
             }
             if (!this.filterBy) {
                 return emails;
@@ -40,6 +46,7 @@ export default {
                 return (email.sender.toLowerCase().includes(txt) ||
                     email.content.toLowerCase().includes(txt))
             })
+            return emailsFilter
         }
     },
     methods: {

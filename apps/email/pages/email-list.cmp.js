@@ -6,17 +6,18 @@ export default {
     template: `
     <section class="email-list">
         <h3 >Our Emails</h3>
-        <h2 v-if="emails.length===0">There is no match emails</h2>
+        <h2 v-if="!emails">There is no match emails</h2>
         <ul v-else>
             <li v-for="currEmail in emails" :key="currEmail.id" >
-               <email-preview :email="currEmail" @click.native="emailClicked(currEmail)" />
+               <email-preview @emailClicked="emailClicked(currEmail)" :email="currEmail" />
             </li>
         </ul>
     </section>
 `,
     methods: {
         emailClicked(currEmail) {
-            this.$router.push(`email-details/${currEmail.id}`)
+            currEmail.readed = true
+            this.$router.push(`/email/email-details/${currEmail.id}`)
         }
     },
     components: {

@@ -1,4 +1,5 @@
 export default {
+    name: 'email-filter',
     template: `
         <section class="email-filter">
             <h3>Filter those emails</h3>
@@ -12,6 +13,7 @@ export default {
     },
     methods: {
         emitFilter() {
+            console.log(this.filterBy);
             this.$emit('doFilter', this.filterBy);
         }
     }

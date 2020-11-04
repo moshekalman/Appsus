@@ -11,17 +11,22 @@ const myRoutes = [{
         path: '/',
         component: homePage
     },
-    {
-        path: '/email-details/:emailId',
-        component: emailDetails
-    },
+    // {
+    //     path: '/email-details/:emailId',
+    //     component: emailDetails
+    // },
     {
         path: '/email',
         component: emailApp,
         children: [{
-            path: 'list',
-            component: emailList
-        }, ]
+                path: ':list?',
+                component: emailList
+            },
+            {
+                path: 'email-details/:emailId',
+                component: emailDetails
+            }
+        ]
     },
     {
         path: '/notes',
