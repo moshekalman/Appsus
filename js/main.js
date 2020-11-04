@@ -1,5 +1,6 @@
 
 import headerCmp from './cmps/header.cmp.js'
+import footerCmp from './cmps/footer.cmp.js'
 import {myRouter} from './routes.js'
 
 const app = new Vue({
@@ -8,9 +9,12 @@ const app = new Vue({
     template: `
     <section> 
         <header-cmp></header-cmp>
+        <router-view></router-view>
+        <footer-cmp></footer-cmp>
     </section>
     `,
     components:{
-        headerCmp
+        headerCmp,
+        footerCmp
     }
 });
