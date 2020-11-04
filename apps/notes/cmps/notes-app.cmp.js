@@ -1,5 +1,6 @@
 import { noteService } from '../services/note-services.js';
 import editNote from './edit-note.cmp.js';
+import savedNote from './saved-note.cmp.js';
 
 export default {
     name: 'noteApp',
@@ -12,22 +13,17 @@ export default {
             <h2 v-if="notes.length" class="">Saved Notes</h2>
             <div class="notes-container flex align-center">
                 <div class="saved-note flex column align-center" v-for="note in notes" :key="note.id">
-                    <div class="saved-text">
-                        {{note.info.txt}}
-                    </div>
-                    <div class="edit-btns flex space-between align-center">
-                        <img @click="onDeleteNote(note.id)" src="./assets/svgs/trash-solid.svg" class="edit-btn">
-                        <img @click="onEditNote(note.id)" src="./apps/notes/assets/svgs/edit-solid.svg" class="edit-btn">
-                    </div>
+                    <saved-note :note="note" @onDeleteEv="onDeleteNote" @onEditEv="onEditNote"> </saved-note>
                 </div>
             </div>
         </section>
-<edit-note></edit-note>
+        <edit-note @onEdit="closeEdit" v-if="currId" :noteId="currId"></edit-note>
     </section>
     `,
     data() {
         return {
             notes: null,
+            currId: null
         };
     },
     methods: {
@@ -36,10 +32,17 @@ export default {
         },
         onDeleteNote(noteId) {
             noteService.deleteNote(noteId);
+        },
+        onEditNote(noteId) {
+            this.currId = noteId;
+        },
+        closeEdit() {
+            this.currId = null;
         }
     },
     components: {
-        editNote
+        editNote,
+        savedNote
     },
     created() {
         noteService.getNotes()

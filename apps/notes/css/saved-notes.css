@@ -1,0 +1,35 @@
+.notes-container {
+    flex-wrap: wrap;
+}
+
+.saved-note {
+    color: rgb(75, 75, 75);
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    width: fit-content;
+    max-width: 300px;
+    height: fit-content;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.edit-btn {
+    width: 1rem;
+    cursor: pointer;
+}
+
+.edit-btns {
+    margin-top: 10px;
+    opacity: 0;
+    transition: .2s;
+    width: 100px;
+}
+
+.saved-note:hover>.edit-btns {
+    opacity: 1;
+}
+
+.saved-text {
+    max-width: 200px;
+    height: fit-content;
+}

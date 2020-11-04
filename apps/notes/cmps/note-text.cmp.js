@@ -5,7 +5,7 @@ export default {
     template: `
     <section>
         <input @blur="emitNote" placeholder="Text here..." v-model="note.info.txt" class="note-text" contenteditable="true">
-        <button @clicl="emitNote">Save Note!</button>
+        <button @click="emitNote">Save Note!</button>
     </section>
 `,
     data() {
