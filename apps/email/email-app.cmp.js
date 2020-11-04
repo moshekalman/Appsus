@@ -13,7 +13,7 @@ export default {
         <email-nav @openAddEmail="isShowAddEmail = !isShowAddEmail" @openShowSaved="showOnlySaved = true" @openShowSent="showOnlySent = true" @backToInbox="backToInbox" />
         <email-add v-if="isShowAddEmail" />
         <email-filter v-if="emails" @doFilter="setFilter" />
-        <router-view v-if="emails" :emails="emailsToShow" />
+        <router-view v-if="emails && !showOnlySaved && !showOnlySent" :emails="emailsToShow" />
         <!-- <email-list v-if="emails" :emails="emailsToShow" /> -->
     </section>
     `,
@@ -28,7 +28,7 @@ export default {
     },
     computed: {
         emailsToShow() {
-            var emails = this.emails
+            var emails = JSON.parse(JSON.stringify(this.emails))
             if (this.showOnlySaved) {
                 emails = []
                 this.emails.forEach(email => {
@@ -53,6 +53,7 @@ export default {
         backToInbox() {
             this.showOnlySaved = false
             this.showOnlySent = false
+            this.$router.push('/email')
         },
         getEmailsAfterPromise() {
             emailService.getEmails().then((emails) => this.emails = emails)
