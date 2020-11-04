@@ -1,4 +1,5 @@
 @import './cmps/header.css';
+@import './cmps/footer.css';
 
 @font-face{
     font-family: Anton;
@@ -9,6 +10,26 @@
     font-family: OpenSans;
     src: url(../assets/fonts/OpenSans-Regular.ttf)
 }
+
+@font-face{
+    font-family: OpenSansL;
+    src: url(../assets/fonts/OpenSans-Light.ttf)
+}
+
+@font-face{
+    font-family: OpenSansSB;
+    src: url(../assets/fonts/OpenSans-SemiBold.ttf)
+}
+
+@font-face{
+    font-family: OpenSansB;
+    src: url(../assets/fonts/OpenSans-Bold.ttf)
+}
+
+@font-face {
+    font-family: brands;
+    src: url(../assets/fonts/fa-brands-400.ttf);
+  }
 
 *{
     box-sizing: border-box;
@@ -24,10 +45,19 @@ body{
     background-color: #6CDAEE;
 }
 
+ul{
+    padding: 0;
+    margin: 0;
+}
+
 .container{
     max-width: 1280px;
     margin: 0 auto;
-    padding: 20px;
+
+}
+
+.container:not(.header-container){
+padding: 20px;
 }
 
 .colors{

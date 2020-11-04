@@ -1,0 +1,52 @@
+.main-footer{
+    background-color: #1B9CE5;
+}
+
+.footer-logo::after{
+    content: ".";
+    color: #10E7DC;
+}
+
+.brands {
+    font-family: brands;
+    color: #6CDAEE;
+    cursor: pointer;
+    font-size: 2em;
+    text-decoration: none;
+    padding: 15px;
+    transition: .2s;
+}
+.brands:hover {
+    color: #F79E02;
+}
+
+.brands.facebook::before {
+    content: "";
+}
+
+.brands.instagram::before {
+    content: "";
+}
+.brands.linkedin::before {
+    content: "";
+}
+
+.brands.github::before {
+    content: "";
+}
+
+.coffee-rights{
+color: #004c94;
+}
+
+.coffee-rights>span{
+    font-family: OpenSansB;
+    color: #003669;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.coffee-rights>span:hover{
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}

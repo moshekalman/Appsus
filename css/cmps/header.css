@@ -19,15 +19,42 @@
 .main-nav a {
     text-decoration: none;
     font-size: 1.3rem;
-    color: #10E7DC;
+    color: #6CDAEE;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 1rem;
+    transition: .2s;
 }
 
 .main-nav li {
-    padding: 1rem;
     background-color: #1B9CE5;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .main-nav{
     height: 100%;
+}
+
+.main-nav ul{
+    height: 100%;
+}
+
+.main-nav li:not(:last-child){
+    border-right:2px solid #F79E02;
+}
+
+.main-nav li:hover{
+    border-bottom:5px solid #F79E02;
+}
+
+.main-nav a:hover{
+    color: #F79E02;
+}
+
+.header-container{
+    height: 100px;
+    padding-left: 20px;
 }
