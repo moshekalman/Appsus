@@ -1,5 +1,6 @@
 import emailList from './cmps/email-list.cmp.js'
 import emailAdd from './cmps/email-add.cmp.js'
+import emailfilter from './cmps/email-filter.cmp.js'
 import emailSaved from './cmps/email-saved.cmp.js'
 import emailSent from './cmps/email-sent.cmp.js'
 import emailNav from './cmps/email-nav.cmp.js'
@@ -11,12 +12,13 @@ export default {
     template: `
     <section class="email-app">
         <email-nav />
-        <router-view/>
+        <router-view />
     </section>
     `,
     components: {
         emailList,
         emailAdd,
+        emailfilter,
         emailNav,
         emailSaved,
         emailSent
