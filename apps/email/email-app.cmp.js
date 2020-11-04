@@ -1,6 +1,6 @@
 import emailList from './pages/email-list.cmp.js'
 import emailAdd from './pages/email-add.cmp.js'
-import emailfilter from './cmps/email-filter.cmp.js'
+import emailFilter from './cmps/email-filter.cmp.js'
 import emailNav from './cmps/email-nav.cmp.js'
 // import { myRouter } from '../../js/routes.js'
 import { emailSercive } from './services/email-service.js'
@@ -55,7 +55,7 @@ export default {
     components: {
         emailList,
         emailAdd,
-        emailfilter,
+        emailFilter,
         emailNav,
     }
 }
