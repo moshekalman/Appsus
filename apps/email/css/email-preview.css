@@ -1,29 +1,50 @@
-.email-preview img {
-    width: 14px;
-    margin: 7px
+.email-preview div {
+    padding: 10px;
 }
 
-.email-preview img:hover {
+.email-preview .btn:hover {
+    color: rgba(24, 23, 23, 0.89);
     cursor: pointer;
+}
+
+.saved {
+    color: rgba(24, 23, 23, 0.89);
 }
 
 .email-preview {
     display: flex;
     font-family: OpenSanSB;
-    font-size: 1.1rem;
-    color: black;
+    font-size: 0.875rem;
+    color: rgb(27, 27, 27);
     background-color: blanchedalmond;
     border-radius: 5px;
     margin: 2px;
 }
 
 .email-preview>* {
-    flex: 1
+    padding: 0 10px;
 }
 
-.read {
+.email-preview p {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-preview span {
+    font-size: 0.875rem;
+    font-family: OpenSanSB;
+    color: #676565;
+}
+
+.email-preview section {
+    display: flex;
+    align-items: center;
+    color: #676565
+}
+
+.readed {
     font-family: inherit;
     color: rgb(82, 80, 80);
-    font-size: 0.9rem;
+    font-size: 0.675rem;
     font-family: OpenSans;
 }

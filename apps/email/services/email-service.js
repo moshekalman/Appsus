@@ -1,7 +1,7 @@
 const STORAGE_KEY_INBOX = 'inboxDB'
 const STORAGE_KEY_SENT = 'sentDB'
 const gEmails = _createEmails();
-const gSentEmails = _getSentEmails();
+// const gSentEmails = _getSentEmails();
 import { storageService } from '../../../js/services/storage-service.js'
 
 export const emailService = {
@@ -9,7 +9,8 @@ export const emailService = {
     remove,
     getById,
     addToSaved,
-    sendEmail
+    sendEmail,
+    addToReaded
 }
 
 function _createEmails() {
@@ -18,10 +19,10 @@ function _createEmails() {
     }
     const emails = [{
             id: 111,
-            sender: 'nadav',
-            addressee: 'me',
+            sender: 'Alon (alonkh@neto.net.il)',
+            addressee: 'Me (nadavkomo@gmail.com)',
             subject: 'hello world',
-            content: ';lsdkvn;lsdnmv dvc;lkdsmnv;lsm dsv;lml;dvm',
+            content: 'To all the new and old friends, I exchanged an email then just updating.\nHow are you doing today?',
             dateAt: 1595947891929,
             readed: false,
             saved: false,
@@ -29,10 +30,10 @@ function _createEmails() {
         },
         {
             id: 222,
-            sender: 'Moshe Kalman',
-            addressee: 'Me(nadavkomo@gmail.com)',
-            subject: 'bye-bye',
-            content: 'al;scm;lam; vcsd;lvmcl;sdmv dc;lsm;ldsmv; vd;lms;lm;ldvm;',
+            sender: 'Moshe Kalman (moshiko555@walla.com)',
+            addressee: 'Me (nadavkomo@gmail.com)',
+            subject: 'visit me',
+            content: 'Come visit me at my new job, I will make a good coffee! ',
             dateAt: 1603982981659,
             readed: false,
             saved: false,
@@ -42,10 +43,44 @@ function _createEmails() {
         {
             id: 333,
             sender: 'Paolo Groppi(paolo123@walla.com)',
-            addressee: 'Me(nadavkomo@gmail.com)',
+            addressee: 'Me (nadavkomo@gmail.com)',
             subject: 'good morning!',
-            content: 's;lkd nkl;ncv;lskdn ds;mc;ldmc;lmsd;cd ds;lcm;lsdmnvl;n;ldsv ds;lmc;lvds',
+            content: 'I tried call you before a hour and you didnt answer, what whith your project?\n call me when you see this massege.',
             dateAt: 1604587806183,
+            readed: false,
+            saved: false,
+            sent: false
+        },
+        {
+            id: 444,
+            sender: 'Alon (alonkh@neto.net.il)',
+            addressee: 'Me(nadavkomo@gmail.com)',
+            subject: 'hello world',
+            content: 'To all the new and old friends, I exchanged an email then just updating.\nHow are you doing today?',
+            dateAt: 1595943259929,
+            readed: false,
+            saved: false,
+            sent: false
+        },
+        {
+            id: 555,
+            sender: 'Moshe Kalman (moshiko555@walla.com)',
+            addressee: 'Me (nadavkomo@gmail.com)',
+            subject: 'call me',
+            content: 'I tried call you before a hour and you didnt answer, what whith your project?\n call me when you see this massege.',
+            dateAt: 1677712981659,
+            readed: false,
+            saved: false,
+            sent: false
+
+        },
+        {
+            id: 666,
+            sender: 'Paolo Groppi(paolo123@walla.com)',
+            addressee: 'Me (nadavkomo@gmail.com)',
+            subject: 'good morning!',
+            content: 'Come visit me at my new job, I will make a good coffee! ',
+            dateAt: 1604581231183,
             readed: false,
             saved: false,
             sent: false
@@ -96,20 +131,30 @@ function addToSaved(currEmail) {
     console.log(gEmails[idx].saved);
     console.log(gEmails);
     storageService.saveToLocalStorage(STORAGE_KEY_INBOX, gEmails)
+}
 
+function addToReaded(currEmail) {
+    console.log(currEmail);
+    const idx = gEmails.findIndex((email) => email.id === currEmail.id)
+    console.log(idx)
+    console.log(gEmails[idx]);
+    gEmails[idx].readed = true
+    console.log(gEmails[idx].saved);
+    console.log(gEmails);
+    storageService.saveToLocalStorage(STORAGE_KEY_INBOX, gEmails)
 }
 
 // function _getEmptyEmailSent() {
 //     return { sender: null, addressee: null, content: null }
 // }
 
-function _getSentEmails() {
-    if (storageService.loadFromLocalStorage(STORAGE_KEY_SENT)) {
-        return storageService.loadFromLocalStorage(STORAGE_KEY_SENT);
-    }
-    const emailSent = []
-    return []
-}
+// function _getSentEmails() {
+//     if (storageService.loadFromLocalStorage(STORAGE_KEY_SENT)) {
+//         return storageService.loadFromLocalStorage(STORAGE_KEY_SENT);
+//     }
+//     const emailSent = []
+//     return []
+// }
 
 function sendEmail(email) {
     var addedEmail = email

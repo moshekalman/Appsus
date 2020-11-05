@@ -3,10 +3,12 @@
 @import './email-list.css';
 @import './email-preview.css';
 @import './email-nav.css';
-@font-face {
+@import './email-datails.css';
+
+/* @font-face {
     font-family: OpenSans;
     src: url(../assets/fonts/OpenSans-Regular.ttf)
-}
+} */
 
 .email-app {
     flex: 1;

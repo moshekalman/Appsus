@@ -15,7 +15,7 @@ export default {
                 <section class="list">
                     <router-view :emails="emailsToShow" />
                 </section>
-                <email-add v-if="isShowAddEmail" @send="isShowAddEmail = false" />
+                <email-add v-if="isShowAddEmail" @send="isShowAddEmail = false" @closeEmailAdd="isShowAddEmail = false" />
             </main>
         </section>
     </section>
