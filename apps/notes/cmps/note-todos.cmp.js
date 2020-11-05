@@ -1,15 +1,15 @@
-
+import { noteService } from '../services/note-services.js';
 
 export default {
-    props: ['info'],
-    name: 'todo-note',
+    props: ['info', 'id'],
+    name: 'todos-note',
     template: `
     <section class="todo-container">
         <h4 class="img-title todo-label">
         {{info.label}}
         </h4>
         <ul class="clean-list">
-            <li v-for="(todo, index) in info.todos">
+            <li v-for="(todo, index) in info.todos" :key="index">
                 <label class="flex space-between">
                     <h5 :class="{done: todo.doneAt}">{{todo.txt}}</h5>
                     <h5 v-if="todo.doneAt">{{currDate(todo.doneAt)}}</h5>
@@ -25,10 +25,10 @@ export default {
         onToggleTodo(idx) {
             if (!this.info.todos[idx].doneAt) this.info.todos[idx].doneAt = Date.now();
             else this.info.todos[idx].doneAt = null;
-            console.log(this.info.todos[idx].doneAt)
+            noteService.editTodoById(this.id, this.info);
         },
-        currDate(dateInMs){
-            return new Date(dateInMs).toLocaleString()
+        currDate(dateInMs) {
+            return new Date(dateInMs).toLocaleString();
         }
     },
-}
+};

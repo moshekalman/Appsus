@@ -8,7 +8,7 @@ export default {
     template: `
     <section class="saved-note flex column align-center" :style="{backgroundColor:bgColor, color}">
         <div class="saved-text">
-            <component :is="note.type" :info="note.info"></component>
+            <component :is="note.type" :info="note.info" :id="note.id"></component>
         </div>
         <div class="edit-btns flex space-between align-center">
             <img @click="emitDelete(note.id)" src="./assets/svgs/trash-solid.svg" class="edit-btn">

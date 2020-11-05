@@ -1,5 +1,4 @@
 
-
 export default {
     props: ['cmp'],
     name: 'add-note',
@@ -14,7 +13,8 @@ export default {
             <input v-if="cmp.type==='noteImg'"  placeholder="Enter Img Title..." v-model="title" class="note-text" required>
             <button class="note-btn save-btn">Save</button>
         </form>
-            <div>
+
+            <div class="todo-prev">
                  <ul>
                     <li v-for="todo in todos">{{todo.txt}}</li>
                 </ul>
@@ -41,7 +41,7 @@ export default {
                 this.title = '';
             }
             if (this.cmp.type === 'noteTodos') {
-                if (!this.todos.length) return
+                if (!this.todos.length) return;
                 this.cmp.info.label = this.txt;
                 this.cmp.info.todos = this.todos;
                 this.todos = [];
@@ -52,9 +52,16 @@ export default {
 
         },
         addTodo() {
-            if (this.currTodo === '') return
+            if (this.currTodo === '') return;
             this.todos.push({ txt: this.currTodo, doneAt: null });
             this.currTodo = '';
+        },
+    },
+    watch: {
+        'cmp'(to, from) {
+            if (this.cmp.type === 'noteText') this.placeHolder = "Enter Text...";
+            else if (this.cmp.type === 'noteImg') this.placeHolder = "Enter Img Url...";
+            else if (this.cmp.type === 'noteTodos') this.placeHolder = "Enter Label For Your Todos...";
         }
     },
     created() {

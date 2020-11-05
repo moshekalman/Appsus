@@ -1,4 +1,3 @@
-import { storageService } from '../../../js/services/storage-service.js';
 import { noteService } from '../services/note-services.js';
 
 export default {
@@ -7,8 +6,9 @@ export default {
     template: `
     <section class="edit-modal flex just-center align-center" v-if="note">
         <div class="edit-content flex column">
-            <input @blur="emitEdit" placeholder="Text here..." v-model="note.info.txt" class="note-text" contenteditable="true">
-            <button @click="emitEdit">Edit!</button>
+            <div class="close-btn" @click="emitCloseModal"><i class="far fa-times-circle"></i></div>
+            <input placeholder="Text here..." v-model="note.info.txt" class="note-text" contenteditable="true">
+            <button class='note-btn' @click="emitEdit">Edit!</button>
         </div>
     </section>
     
@@ -20,8 +20,12 @@ export default {
     },
     methods: {
         emitEdit() {
-            this.$emit('onEdit');
+            this.$emit('onCloseModal');
             noteService.editNoteById(this.noteId, this.note);
+        },
+        emitCloseModal() {
+            this.note = null;
+            this.$emit('onCloseModal');
         },
 
     },

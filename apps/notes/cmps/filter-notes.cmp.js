@@ -1,8 +1,4 @@
 
-
-
-
-
 export default {
     name: `filter-note`,
     template: `
@@ -11,7 +7,7 @@ export default {
     <div class="search-body flex">
         <div class="search-box">
         <form @submit.prevent="emitSubmit">
-        <input class="search-bar" v-model="filterBy" @input type="text">
+        <input placeholder="Search by text, title or label..." class="search-bar" v-model="filterBy" @input type="text">
         <img class="edit-btn search-btn" @click="emitSubmit" src="./assets/svgs/search-solid.svg">
         </form>    
         </div>

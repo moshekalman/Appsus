@@ -1,4 +1,3 @@
-
 export const noteTypes = {
     title: `Note Types`,
     cmps: [

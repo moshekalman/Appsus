@@ -8,7 +8,8 @@ export const noteService = {
     getNoteById,
     editNoteById,
     changeBgColor,
-    changeColor
+    changeColor,
+    editTodoById
 };
 
 const NOTES_KEY = 'notesDB';
@@ -71,6 +72,14 @@ function changeColor({ color, id }) {
     getNoteById(id)
         .then(res => {
             (res.style) ? res.style.color = color : res.style = { color };
+            storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+        });
+}
+
+function editTodoById(id, info) {
+    getNoteById(id)
+        .then(res => {
+            res.info = info;
             storageService.saveToLocalStorage(NOTES_KEY, gNotes);
         });
 }

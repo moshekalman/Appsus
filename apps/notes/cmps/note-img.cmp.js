@@ -1,6 +1,6 @@
 export default {
     props: ['info'],
-    name: 'text-note',
+    name: 'img-note',
     template: `
     <section>
         <h4 class="img-title">

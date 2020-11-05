@@ -2,7 +2,7 @@ import { noteService } from '../services/note-services.js';
 import editNote from './edit-note.cmp.js';
 import savedNote from './saved-note.cmp.js';
 import filterNotes from './filter-notes.cmp.js';
-import {noteTypes} from './dynamicNote.cmp.js'
+import { noteTypes } from './dynamicNote.cmp.js';
 import addNote from './add-note.cmp.js';
 
 export default {
@@ -12,9 +12,9 @@ export default {
         <div class="add-note flex space-between align-center">
             <add-note v-if="currCmp" :cmp="currCmp" @onSaveNote="saveNote"></add-note>
             <div class="select-note-type flex space-bewteen">
-                <div><i :class="{selected: currCmp === 'noteText'}" class="type-icn fas fa-font"></i></div>
-                <div><i :class="{selected: currCmp === 'noteImg'}" class="type-icn far fa-image"></i></div>
-                <div><i :class="{selected: currCmp === 'noteTodos'}" class="type-icn fas fa-list"></i></div>
+                <div :class="{selected: activeType === 0}" @click="changeNoteType(0)"><i class="type-icn fas fa-font"></i></div>
+                <div :class="{selected: activeType === 1}" @click="changeNoteType(1)"><i class="type-icn far fa-image"></i></div>
+                <div :class="{selected: activeType === 2}" @click="changeNoteType(2)"><i class="type-icn fas fa-list"></i></div>
             </div>
         </div>
         <filter-notes @filtered="onFilter" />
@@ -26,7 +26,7 @@ export default {
                     v-for="note in notesToShow" :key="note.id"> </saved-note>
                 </div>
         </section>
-        <edit-note @onEdit="closeEdit" v-if="currId" :noteId="currId"></edit-note>
+        <edit-note @onCloseModal="closeEditModal" v-if="currId" :noteId="currId"></edit-note>
     </section>
     `,
     data() {
@@ -35,7 +35,8 @@ export default {
             currId: null,
             filterBy: null,
             noteTypes: noteTypes,
-            currCmp: noteTypes.cmps[2]
+            currCmp: noteTypes.cmps[0],
+            activeType: 0
         };
     },
     methods: {
@@ -48,7 +49,7 @@ export default {
         onEditNote(noteId) {
             this.currId = noteId;
         },
-        closeEdit() {
+        closeEditModal() {
             this.currId = null;
         },
         onChangeBgColor(bgcNoteObj) {
@@ -59,13 +60,22 @@ export default {
         },
         onFilter(filter) {
             this.filterBy = filter;
+        },
+        changeNoteType(idx) {
+            this.currCmp = noteTypes.cmps[idx];
+            this.activeType = idx;
+            console.log(this.activeType);
         }
     },
     computed: {
         notesToShow() {
             if (!this.filterBy) return this.notes;
-            return this.notes.filter(note => note.info.txt.toLowerCase().includes(this.filterBy))
-        }
+            return this.notes.filter(note => {
+                if (note.type === 'noteText') return note.info.txt.toLowerCase().includes(this.filterBy);
+                if (note.type === 'noteImg') return note.info.title.toLowerCase().includes(this.filterBy);
+                if (note.type === 'noteTodos') return note.info.label.toLowerCase().includes(this.filterBy);
+            });
+        },
     },
     components: {
         editNote,

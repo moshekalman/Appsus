@@ -16,7 +16,7 @@
     border-radius: 20px;
     align-self: center;
     width: 80%;
-    height: 190px;
+    min-height: 190px;
 }
 
 .save-btn{
