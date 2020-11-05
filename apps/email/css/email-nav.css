@@ -9,17 +9,16 @@ button:hover {
 .email-app nav {
     display: flex;
     flex-direction: column;
+    margin-right: 20px
 }
 
 .email-app nav button {
-    background-color: blue;
-    border: none;
-    border-radius: 12px;
     padding: 5px;
-    margin: 15px;
+    margin: 5px;
 }
 
 .email-app nav .active {
-    color: gold;
-    border: 2px gold solid;
+    color: #F79E02;
+    border: 1.5px #F79E02 solid;
+    background-color: #0074e1af;
 }

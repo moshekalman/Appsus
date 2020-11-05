@@ -13,7 +13,7 @@ export default {
             <span>content</span>
             <textarea type="text" v-model="email.content" placeholder="To" colm=5 rows=10 > </textarea>
         </label>  
-        <button class="send-btn" @click.prevent="onSendEmail">Send</button>
+        <button class="email-btn" @click.prevent="onSendEmail">Send</button>
     </form>      
     `,
     data() {
@@ -26,8 +26,9 @@ export default {
     },
     methods: {
         getCurrTime() {
-            var currTime = new Date()
-            this.email.dateAt = `${currTime.getHours()}:${currTime.getMinutes()}`
+            this.email.dateAt = Date.now()
+                // var currTime = new Date()
+                // this.email.dateAt = `${currTime.getHours()}:${currTime.getMinutes()}`
         },
         onSendEmail() {
             this.$emit('send')

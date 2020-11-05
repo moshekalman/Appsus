@@ -2,10 +2,10 @@ export default {
     name: 'email-nav',
     template: `
       <nav>
-        <button :class="{active: activeBtn === 'btn1'}" @click="addEmail" exact>Compose</button>
-        <button :class="{active: activeBtn === 'btn2'}" @click="toInbox" exact>Inbox</button>
-        <button :class="{active: activeBtn === 'btn3'}" @click="showSaved" exact>Saved Items </button>
-        <button :class="{active: activeBtn === 'btn4'}" @click="showSent" exact>Sent Items</button>
+        <button class="email-btn" :class="{active: activeBtn === 'btn1'}" @click="addEmail" exact>Compose</button>
+        <button class="email-btn" :class="{active: activeBtn === 'btn2'}" @click="toInbox" exact>Inbox</button>
+        <button class="email-btn" :class="{active: activeBtn === 'btn3'}" @click="showSaved" exact>Saved Items </button>
+        <button class="email-btn" :class="{active: activeBtn === 'btn4'}" @click="showSent" exact>Sent Items</button>
       </nav>
     `,
     data() {

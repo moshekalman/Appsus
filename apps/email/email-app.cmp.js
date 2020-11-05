@@ -7,10 +7,10 @@ import { emailService } from './services/email-service.js'
 export default {
     name: 'email-app',
     template: `
-    <section class="email-app">
-        <email-filter v-if="emails" @doFilter="setFilter" />
+    <section class="email-app container">
+        <email-nav @openAddEmail="isShowAddEmail = true" @openShowSaved="showSaved" @openShowSent="showSent" @backToInbox="backToInbox" />
         <section class="content">
-            <email-nav @openAddEmail="isShowAddEmail = true" @openShowSaved="showSaved" @openShowSent="showSent" @backToInbox="backToInbox" />
+            <email-filter v-if="emails" @doFilter="setFilter" />
             <main>
                 <section class="list">
                     <router-view :emails="emailsToShow" />

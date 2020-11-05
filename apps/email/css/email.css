@@ -3,13 +3,29 @@
 @import './email-list.css';
 @import './email-preview.css';
 @import './email-nav.css';
+@font-face {
+    font-family: OpenSans;
+    src: url(../assets/fonts/OpenSans-Regular.ttf)
+}
+
 .email-app {
+    flex: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center
 }
 
 .email-app .content {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+}
+
+.email-btn {
+    background-color: #0074e154;
+    border: 1px solid #0074E1;
+    border-radius: 20px;
+    padding: 10px;
+    transition: .2s;
+}
+
+.email-btn:hover {
+    background-color: #0074e1af;
 }
