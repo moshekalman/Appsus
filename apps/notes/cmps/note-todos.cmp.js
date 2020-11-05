@@ -28,7 +28,7 @@ export default {
     },
     computed: {
         currDate(dateInMs){
-            // return new Date.customFormat("#DD#/#MM# #hh#:#mm#")
+            // return new Date(dateInMs).customFormat("#DD#/#MM# #hh#:#mm#")
         }
     },
 }

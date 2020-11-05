@@ -1,9 +1,9 @@
-export default {
+export const utilService = {
     getTimeByFormat
-}
+};
 
 function getTimeByFormat(formatString) {
-    Date.prototype.customFormat = function(formatString) {
+    Date.prototype.customFormat = function (formatString) {
         var YYYY, YY, MMMM, MMM, MM, M, DDDD, DDD, DD, D, hhhh, hhh, hh, h, mm, m, ss, s, ampm, AMPM, dMod, th;
         YY = ((YYYY = this.getFullYear()) + "").slice(-2);
         MM = (M = this.getMonth() + 1) < 10 ? ('0' + M) : M;
