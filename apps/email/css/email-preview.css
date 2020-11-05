@@ -1,0 +1,17 @@
+.email-preview {
+    display: flex;
+    justify-content: space-between;
+}
+
+.email-preview img {
+    width: 14px;
+    margin: 7px
+}
+
+.email-preview img:hover {
+    cursor: pointer;
+}
+
+.email-preview>* {
+    margin: 5px;
+}

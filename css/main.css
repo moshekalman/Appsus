@@ -1,28 +1,28 @@
 @import './cmps/header.css';
 @import './cmps/footer.css';
 @import '../apps/notes/css/notes.css';
-
-@font-face{
+@import '../apps/email/css/email.css';
+@font-face {
     font-family: Anton;
     src: url(../assets/fonts/Anton-Regular.ttf)
 }
 
-@font-face{
+@font-face {
     font-family: OpenSans;
     src: url(../assets/fonts/OpenSans-Regular.ttf)
 }
 
-@font-face{
+@font-face {
     font-family: OpenSansL;
     src: url(../assets/fonts/OpenSans-Light.ttf)
 }
 
-@font-face{
+@font-face {
     font-family: OpenSansSB;
     src: url(../assets/fonts/OpenSans-SemiBold.ttf)
 }
 
-@font-face{
+@font-face {
     font-family: OpenSansB;
     src: url(../assets/fonts/OpenSans-Bold.ttf)
 }
@@ -30,65 +30,67 @@
 @font-face {
     font-family: brands;
     src: url(../assets/fonts/fa-brands-400.ttf);
-  }
+}
 
-*{
+* {
     box-sizing: border-box;
 }
 
-html{
+html {
     font-size: 16px;
     font-family: OpenSans;
 }
 
-body{
+body {
     margin: 0;
     background-color: #6CDAEE;
 }
 
-ul{
+ul {
     padding: 0;
     margin: 0;
 }
 
-.container{
+.container {
     max-width: 1280px;
     margin: 0 auto;
-
 }
 
-.container:not(.header-container){
-padding: 20px;
+.container:not(.header-container) {
+    padding: 20px;
 }
 
-.colors{
-    color:#10E7DC #0074E1 #1B9CE5 #6CDAEE #F79E02 
+.colors {
+    color: #10E7DC #0074E1 #1B9CE5 #6CDAEE #F79E02
 }
+
 
 /* Helpers */
 
-.flex{
+.flex {
     display: flex;
 }
 
-.flex.column{
+.flex.column {
     flex-direction: column;
 }
 
-.flex.align-center{
+.flex.align-center {
     align-items: center;
 }
 
-.flex.just-center{
+.flex.just-center {
     justify-content: center;
 }
-.flex.space-between{
+
+.flex.space-between {
     justify-content: space-between;
 }
 
+
 /* list */
 
-.clean-list{
+.clean-list {
     list-style-type: none;
     text-decoration: none;
 }

@@ -5,11 +5,12 @@ export default {
     name: 'email-preview',
     template: `
     <section @click="clicked" class="email-preview">
-        <h3 class="sender-name">{{email.sender}}</h3>
+        <p class="sender-name">From: {{email.sender}}</p>
+        <p class="addressee-name">To: {{email.addressee}}</p>
         <p class="content">{{email.content}}</p>
         <p class="date-at">{{email.dateAt}}</p>
-        <button class="remove-btn" @click.stop="onRemove">remove</button>
-        <button class="save-btn" @click.stop="onAddToSaved">{{saveBtn}}</button>
+        <img src="./assets/svgs/trash-solid.svg" class="remove-btn" @click.stop="onRemove">
+        <img src="./apps/email/assets/svg/save-solid.svg" class="save-btn" @click.stop="onAddToSaved">
     </section>
     `,
     data() {

@@ -1,0 +1,25 @@
+button:focus {
+    outline: 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.email-app nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-app nav button {
+    background-color: blue;
+    border: none;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 15px;
+}
+
+.email-app nav .active {
+    color: gold;
+    border: 2px gold solid;
+}

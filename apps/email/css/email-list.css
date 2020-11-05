@@ -1,0 +1,8 @@
+.email-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-list ul {
+    list-style: none;
+}

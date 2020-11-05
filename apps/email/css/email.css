@@ -1,0 +1,15 @@
+@import './email-add.css';
+@import './email-filter.css';
+@import './email-list.css';
+@import './email-preview.css';
+@import './email-nav.css';
+.email-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.email-app .content {
+    display: flex;
+    justify-content: space-around;
+}

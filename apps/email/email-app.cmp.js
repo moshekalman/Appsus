@@ -1,20 +1,23 @@
-import emailList from './pages/email-list.cmp.js'
+// import emailList from './pages/email-list.cmp.js'
 import emailAdd from './pages/email-add.cmp.js'
 import emailFilter from './cmps/email-filter.cmp.js'
 import emailNav from './cmps/email-nav.cmp.js'
-// import { myRouter } from '../../js/routes.js'
 import { emailService } from './services/email-service.js'
 
 export default {
     name: 'email-app',
-    // router: myRouter,
     template: `
     <section class="email-app">
-        <email-nav @openAddEmail="isShowAddEmail = !isShowAddEmail" @openShowSaved="showOnlySaved = true" @openShowSent="showOnlySent = true" @backToInbox="backToInbox" />
-        <email-add v-if="isShowAddEmail" />
         <email-filter v-if="emails" @doFilter="setFilter" />
-        <router-view v-if="emails && !showOnlySaved && !showOnlySent" :emails="emailsToShow" />
-        <!-- <email-list v-if="emails" :emails="emailsToShow" /> -->
+        <section class="content">
+            <email-nav @openAddEmail="isShowAddEmail = true" @openShowSaved="showSaved" @openShowSent="showSent" @backToInbox="backToInbox" />
+            <main>
+                <section class="list">
+                    <router-view :emails="emailsToShow" />
+                </section>
+                <email-add v-if="isShowAddEmail" @send="isShowAddEmail = false" />
+            </main>
+        </section>
     </section>
     `,
     data() {
@@ -23,12 +26,24 @@ export default {
             emails: null,
             isShowAddEmail: false,
             showOnlySaved: false,
-            showOnlySent: false
+            showOnlySent: false,
         }
     },
     computed: {
         emailsToShow() {
-            var emails = this.emails
+            if (!this.emails) return
+            this.getEmailsAfterPromise()
+            var emails = JSON.parse(JSON.stringify(this.emails))
+            if (this.showOnlySent) {
+                console.log('check');
+                emails = []
+                this.emails.forEach(email => {
+                    console.log(email);
+                    if (email.sent === true) {
+                        emails.push(email)
+                    }
+                })
+            }
             if (this.showOnlySaved) {
                 console.log('check');
                 emails = []
@@ -38,23 +53,45 @@ export default {
                     }
                 })
             }
-            if (!this.filterBy) {
-                return emails;
-            }
             var emailsFilter = []
+            if (!this.filterBy) {
+                if (!this.showOnlySent && !this.showOnlySaved) {
+                    this.emails.forEach(email => {
+                        if (email.sent === false) {
+                            emailsFilter.push(email)
+                        }
+                    })
+                    return emailsFilter
+                } else {
+                    return emails;
+                }
+            }
             const txt = this.filterBy.byWord.toLowerCase();
             emailsFilter = emails.filter(email => {
                 return (email.sender.toLowerCase().includes(txt) ||
                     email.content.toLowerCase().includes(txt))
             })
+
             return emailsFilter
         }
     },
     methods: {
+        showSent() {
+            this.showOnlySent = true
+            this.showOnlySaved = false
+            this.isShowAddEmail = false
+        },
+        showSaved() {
+            this.showOnlySaved = true
+            this.showOnlySent = false
+            this.isShowAddEmail = false
+        },
         backToInbox() {
+            if (!this.isShowAddEmail && !this.$route.params.emailId && !this.showOnlySaved && !this.showOnlySent) return
             this.showOnlySaved = false
             this.showOnlySent = false
-                // this.$router.push('/email')
+            this.isShowAddEmail = false
+            if (this.$route.params.emailId) this.$router.push('/email')
         },
         getEmailsAfterPromise() {
             emailService.getEmails().then((emails) => this.emails = emails)
@@ -67,7 +104,7 @@ export default {
         this.getEmailsAfterPromise()
     },
     components: {
-        emailList,
+        // emailList,
         emailAdd,
         emailFilter,
         emailNav,
