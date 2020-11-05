@@ -26,10 +26,16 @@ export default {
             emailService.remove(this.email.id)
         },
         onAddToSaved() {
-            this.email.saved = !this.email.saved
-            if (this.email.saved) this.saveBtn = 'unsave'
+            // this.email.saved = !this.email.saved
+            if (this.saveBtn === 'save') this.saveBtn = 'unsave'
             else this.saveBtn = 'save'
+            emailService.addToSaved(this.email)
+
         }
+    },
+    created() {
+        if (!this.email.saved) this.saveBtn = 'save'
+        else this.saveBtn = 'unsave'
     },
     components: {
         emailService

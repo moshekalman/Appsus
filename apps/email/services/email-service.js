@@ -5,7 +5,8 @@ import { storageService } from '../../../js/services/storage-service.js'
 export const emailService = {
     getEmails,
     remove,
-    getById
+    getById,
+    addToSaved
 }
 
 function _createEmails() {
@@ -71,4 +72,16 @@ function getById(id) {
     const email = gEmails.find(currEmail => currEmail.id === +id)
     console.log(email);
     return Promise.resolve(email)
+}
+
+function addToSaved(currEmail) {
+    console.log(currEmail);
+    const idx = gEmails.findIndex((email) => email.id === currEmail.id)
+    console.log(idx)
+    console.log(gEmails[idx]);
+    gEmails[idx].saved = !gEmails[idx].saved
+    console.log(gEmails[idx].saved);
+    console.log(gEmails);
+    storageService.saveToLocalStorage(STORAGE_KEY, gEmails)
+
 }
