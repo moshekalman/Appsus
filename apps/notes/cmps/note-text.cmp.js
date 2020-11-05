@@ -3,7 +3,7 @@ export default {
     name:'text-note',
     template:`
     <section>
-        {{info.txt}}
+    <h4 class="light-text text-features">{{info.txt}}</h4>
     </section>
     `
 }

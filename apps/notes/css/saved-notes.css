@@ -30,7 +30,7 @@
 }
 
 .saved-text {
-    max-width: 400px;
+    max-width: 100%;
     height: fit-content;
 }
 
@@ -64,10 +64,16 @@ h4 {
     margin-top: 0;
 }
 
-.todo-label {
-    margin-right: 150px;
+.todo-container {
+    max-width: 100%;
+    padding: 15px;
 }
 
-.todo-container {
-    padding: 15px;
+.text-features{
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+.light-text{
+    font-family: OpenSansL;
 }

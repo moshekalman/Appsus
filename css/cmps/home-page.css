@@ -72,4 +72,5 @@
 .home-links>div>h3>span:hover,
 .home-links>div>.router-icn:hover {
     color: rgb(255, 196, 0);
+    text-decoration: underline;
 }

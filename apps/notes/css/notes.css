@@ -3,13 +3,14 @@
 @import './saved-notes.css';
 @import './filter-notes.css';
 
-textarea,
 input {
     margin: 0;
     padding: 10px;
     font-family: OpenSansL;
     border: none;
-    overflow: hidden;
+    overflow: scroll;
+    overflow-wrap: break-word;
+
 }
 
 button {
@@ -28,6 +29,7 @@ button {
     transition: .2s;
     font-size: 1rem;
     font-family: OpenSansL;
+    height: fit-content;
 }
 
 .note-btn:hover {
