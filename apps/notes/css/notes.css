@@ -1,10 +1,10 @@
 @import './edit-notes.css';
-@import './note-text.css';
+@import './add-note.css';
 @import './saved-notes.css';
 @import './filter-notes.css';
 
 textarea,
-input{
+input {
     margin: 0;
     padding: 10px;
     font-family: OpenSansL;
@@ -12,7 +12,33 @@ input{
     overflow: hidden;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
+.select-note-type>* {
+    padding: 10px;
+}
+
+.note-btn {
+    background-color: #0074e154;
+    border: 1px solid #0074E1;
+    border-radius: 8px;
+    padding: 5px 10px;
+    transition: .2s;
+    font-size: 1rem;
+    font-family: OpenSansL;
+}
+
+.note-btn:hover {
+    background-color: #0074e1af;
+}
+
+.type-icn {
+    color: #0074e154;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.type-icn:hover {
+    color: #0074e1;
+}

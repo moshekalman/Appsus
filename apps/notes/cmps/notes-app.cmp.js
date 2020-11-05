@@ -9,8 +9,13 @@ export default {
     name: 'noteApp',
     template: `
     <section class="notes-container container flex column">
-        <div class="add-note flex column">
+        <div class="add-note flex space-between align-center">
             <add-note v-if="currCmp" :cmp="currCmp" @onSaveNote="saveNote"></add-note>
+            <div class="select-note-type flex space-bewteen">
+                <div><i :class="{selected: currCmp === 'noteText'}" class="type-icn fas fa-font"></i></div>
+                <div><i :class="{selected: currCmp === 'noteImg'}" class="type-icn far fa-image"></i></div>
+                <div><i :class="{selected: currCmp === 'noteTodos'}" class="type-icn fas fa-list"></i></div>
+            </div>
         </div>
         <filter-notes @filtered="onFilter" />
         <section v-if="notes" class="notes-box">

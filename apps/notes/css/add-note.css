@@ -1,0 +1,24 @@
+
+.new-note-container{
+    padding: 15px;
+    width: 100%;
+}
+
+.note-text {
+    outline: none;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.add-note {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 20px;
+    align-self: center;
+    width: 80%;
+    height: 190px;
+}
+
+.save-btn{
+    margin-left: 10px;
+}

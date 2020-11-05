@@ -4,15 +4,15 @@ export default {
     props: ['cmp'],
     name: 'add-note',
     template: `
-    <section>
-        <form  v-if="cmp.type==='noteTodos'" class="add-todos flex" @submit.stop.prevent="addTodo">
-                <input v-model="currTodo"  placeholder="Add Todo" class="note-text">
-                <button>Add Todo</button>
+    <section class="new-note-container flex column">
+        <form  v-if="cmp.type==='noteTodos'" class="add-todos" @submit.stop.prevent="addTodo">
+                <input v-model="currTodo"  placeholder="Add Todo..." class="note-text">
+                <button class="note-btn save-btn">Add</button>
         </form>
         <form @submit.prevent="emitNote">
             <input :placeholder="placeHolder" v-model="txt" class="note-text" required>
             <input v-if="cmp.type==='noteImg'"  placeholder="Enter Img Title..." v-model="title" class="note-text" required>
-            <button>Save Note!</button>
+            <button class="note-btn save-btn">Save</button>
         </form>
             <div>
                  <ul>
