@@ -13,9 +13,9 @@ export default {
             <email-filter v-if="emails" @doFilter="setFilter" />
             <main>
                 <section class="list">
-                    <router-view :emails="emailsToShow" />
+                    <router-view @replayEmail="replayEmail" :emails="emailsToShow" />
                 </section>
-                <email-add v-if="isShowAddEmail" @send="isShowAddEmail = false" @closeEmailAdd="isShowAddEmail = false" />
+                <email-add :email="replayedEmail" v-if="isShowAddEmail" @send="isShowAddEmail = false" @closeEmailAdd="isShowAddEmail = false" />
             </main>
         </section>
     </section>
@@ -27,6 +27,7 @@ export default {
             isShowAddEmail: false,
             showOnlySaved: false,
             showOnlySent: false,
+            replayedEmail: null
         }
     },
     computed: {
@@ -76,6 +77,11 @@ export default {
         }
     },
     methods: {
+        replayEmail(email) {
+            const currEmail = JSON.parse(JSON.stringify(email))
+            currEmail.replay = true
+            this.replayedEmail = email
+        },
         showSent() {
             this.showOnlySent = true
             this.showOnlySaved = false

@@ -1,0 +1,23 @@
+.email-datails {
+    max-width: 450px;
+    display: flex;
+}
+
+.email-datails section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.email-datails .head-details {
+    display: flex;
+    /* justify-content: center; */
+}
+
+.email-datails .head-details>* {
+    margin: 0 5px;
+}
+
+.email-datails .content {
+    font-size: 1.2rem;
+}

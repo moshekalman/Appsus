@@ -8,7 +8,7 @@ export default {
         <div class="add-form">
                 <section class="head-form">
                     <span>New Massege</span>    
-                    <button class="close-btn" @click="closeAdd"><i class="far fa-times-circle"></i></button>   
+                    <button class="btn-close" @click="closeAdd"><i class="far fa-times-circle"></i></button>   
                 </section>
             <label>
                 <!-- <span>To</span> -->
