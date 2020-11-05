@@ -1,6 +1,7 @@
 @import './edit-notes.css';
 @import './note-text.css';
 @import './saved-notes.css';
+@import './filter-notes.css';
 
 textarea,
 input{
@@ -9,5 +10,9 @@ input{
     font-family: OpenSansL;
     border: none;
     overflow: hidden;
+}
+
+button{
+    cursor: pointer;
 }
 

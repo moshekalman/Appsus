@@ -54,6 +54,11 @@
     border-bottom: 5px solid #F79E02;
 }
 
+.router-link-active:not(.logo) {
+    border-bottom: 5px solid #F79E02;
+    color: #F79E02;
+}
+
 .main-nav a:hover {
     color: #F79E02;
 }

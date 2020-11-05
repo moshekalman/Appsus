@@ -1,20 +1,24 @@
 import { noteService } from '../services/note-services.js';
 import editNote from './edit-note.cmp.js';
 import savedNote from './saved-note.cmp.js';
+import filterNotes from './filter-notes.cmp.js';
+import {noteTypes} from './dynamicNote.cmp.js'
+import addNote from './add-note.cmp.js';
 
 export default {
     name: 'noteApp',
     template: `
     <section class="notes-container container flex column">
         <div class="add-note flex column">
-            <router-view @onSaveNote="saveNote"></router-view>
+            <add-note v-if="currCmp" :cmp="currCmp" @onSaveNote="saveNote"></add-note>
         </div>
+        <filter-notes @filtered="onFilter" />
         <section v-if="notes" class="notes-box">
             <h2 v-if="notes.length" class="">Saved Notes</h2>
                 <div class="notes-container flex align-center" >
                     <saved-note @emitColorChange="onChangeColor" @emitBgcChange="onChangeBgColor" :note="note" 
                     @onDeleteEv="onDeleteNote" @onEditEv="onEditNote" 
-                    v-for="note in notes" :key="note.id"> </saved-note>
+                    v-for="note in notesToShow" :key="note.id"> </saved-note>
                 </div>
         </section>
         <edit-note @onEdit="closeEdit" v-if="currId" :noteId="currId"></edit-note>
@@ -23,7 +27,10 @@ export default {
     data() {
         return {
             notes: null,
-            currId: null
+            currId: null,
+            filterBy: null,
+            noteTypes: noteTypes,
+            currCmp: noteTypes.cmps[2]
         };
     },
     methods: {
@@ -39,16 +46,27 @@ export default {
         closeEdit() {
             this.currId = null;
         },
-        onChangeBgColor(bgcNoteObj){
-            noteService.changeBgColor(bgcNoteObj)
+        onChangeBgColor(bgcNoteObj) {
+            noteService.changeBgColor(bgcNoteObj);
         },
-        onChangeColor(colorNoteObj){
-            noteService.changeColor(colorNoteObj)
+        onChangeColor(colorNoteObj) {
+            noteService.changeColor(colorNoteObj);
+        },
+        onFilter(filter) {
+            this.filterBy = filter;
+        }
+    },
+    computed: {
+        notesToShow() {
+            if (!this.filterBy) return this.notes;
+            return this.notes.filter(note => note.info.txt.toLowerCase().includes(this.filterBy))
         }
     },
     components: {
         editNote,
-        savedNote
+        savedNote,
+        filterNotes,
+        addNote
     },
     created() {
         noteService.getNotes()

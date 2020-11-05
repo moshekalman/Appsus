@@ -1,3 +1,6 @@
+import noteText from './note-text.cmp.js';
+import noteImg from './note-img.cmp.js';
+import noteTodos from './note-todos.cmp.js';
 
 export default {
     props: ['note'],
@@ -5,7 +8,7 @@ export default {
     template: `
     <section class="saved-note flex column align-center" :style="{backgroundColor:bgColor, color}">
         <div class="saved-text">
-            {{note.info.txt}}
+            <component :is="note.type" :info="note.info"></component>
         </div>
         <div class="edit-btns flex space-between align-center">
             <img @click="emitDelete(note.id)" src="./assets/svgs/trash-solid.svg" class="edit-btn">
@@ -41,6 +44,11 @@ export default {
         onEmitChangeColor() {
             this.$emit('emitColorChange', { color: this.color, id: this.note.id });
         }
+    },
+    components: {
+        noteText,
+        noteImg,
+        noteTodos
     },
     created() {
         if (this.note.style) {

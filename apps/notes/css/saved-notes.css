@@ -30,7 +30,7 @@
 }
 
 .saved-text {
-    max-width: 200px;
+    max-width: 400px;
     height: fit-content;
 }
 
@@ -45,4 +45,16 @@
     width: 0.5rem;
     opacity: 0;
     z-index: -1;
+}
+
+.note-img{
+    max-width: 100%;
+}
+
+.done{
+    text-decoration: line-through;
+}
+
+h5,h6{
+    margin: 0;
 }
