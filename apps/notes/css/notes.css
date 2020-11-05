@@ -29,6 +29,7 @@ button {
     transition: .2s;
     font-size: 1rem;
     font-family: OpenSansL;
+    height: fit-content;
 }
 
 .note-btn:hover {

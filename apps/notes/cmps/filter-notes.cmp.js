@@ -2,9 +2,9 @@
 export default {
     name: `filter-note`,
     template: `
-    <section class="note-search-container ">
+    <section class="note-search-container">
     <h3 class="search-header">Search here ↓</h3>
-    <div class="search-body flex">
+    <div class="search-body flex align-center">
         <div class="search-box">
         <form @submit.prevent="emitSubmit">
         <input placeholder="Search by text, title or label..." class="search-bar" v-model="filterBy" @input type="text">

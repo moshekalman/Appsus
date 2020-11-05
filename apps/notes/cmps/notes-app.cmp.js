@@ -64,11 +64,11 @@ export default {
         changeNoteType(idx) {
             this.currCmp = noteTypes.cmps[idx];
             this.activeType = idx;
-            console.log(this.activeType);
         }
     },
     computed: {
         notesToShow() {
+            if(!this.notes) return
             if (!this.filterBy) return this.notes;
             return this.notes.filter(note => {
                 if (note.type === 'noteText') return note.info.txt.toLowerCase().includes(this.filterBy);
