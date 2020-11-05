@@ -1,9 +1,23 @@
-.main-footer{
+.main-footer {
     background-color: #1B9CE5;
     margin: 0 auto;
+    height: 120px;
+    width: 100%;
 }
 
-.footer-logo::after{
+.footer-container {
+    padding: 8px;
+}
+
+.footer-container>*:not(:first-child) {
+    margin-top: 5px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.footer-logo::after {
     content: ".";
     color: #10E7DC;
 }
@@ -17,6 +31,7 @@
     padding: 15px;
     transition: .2s;
 }
+
 .brands:hover {
     color: #F79E02;
 }
@@ -28,6 +43,7 @@
 .brands.instagram::before {
     content: "";
 }
+
 .brands.linkedin::before {
     content: "";
 }
@@ -36,18 +52,18 @@
     content: "";
 }
 
-.coffee-rights{
-color: #004c94;
+.coffee-rights {
+    color: #004c94;
 }
 
-.coffee-rights>span{
+.coffee-rights>span {
     font-family: OpenSansB;
     color: #003669;
     transition: .2s;
     cursor: pointer;
 }
 
-.coffee-rights>span:hover{
+.coffee-rights>span:hover {
     color: rgb(255, 255, 255);
     text-decoration: underline;
 }

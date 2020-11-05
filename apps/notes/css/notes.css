@@ -39,6 +39,13 @@ button {
     font-size: 2rem;
     cursor: pointer;
 }
+
 .type-icn:hover {
     color: #0074e1;
+}
+
+.notes-container {
+    padding-top: 15px;
+    flex: 1;
+    width: 100%;
 }

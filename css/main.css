@@ -1,7 +1,9 @@
 @import './cmps/header.css';
+@import './cmps/home-page.css';
 @import './cmps/footer.css';
 @import '../apps/notes/css/notes.css';
 @import '../apps/email/css/email.css';
+
 @font-face {
     font-family: Anton;
     src: url(../assets/fonts/Anton-Regular.ttf)
@@ -50,6 +52,12 @@ body {
     flex-direction: column;
 }
 
+body>section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -60,7 +68,7 @@ ul {
     margin: 0 auto;
 }
 
-.container:not(.header-container) {
+.container:not(.header-container, .footer-container) {
     padding: 20px;
 }
 
@@ -68,6 +76,9 @@ ul {
     color: #10E7DC #0074E1 #1B9CE5 #6CDAEE #F79E02
 }
 
+.app {
+    flex: 1;
+}
 
 /* Helpers */
 
@@ -100,20 +111,24 @@ ul {
 }
 
 
-@media screen and (max-width: 880px){
-    html{
+@media screen and (max-width: 880px) {
+    html {
         font-size: 14px;
+    }
+
+    .container {
+        max-width: 800px;
     }
 }
 
-@media screen and (max-width: 660px){
-    html{
+@media screen and (max-width: 660px) {
+    html {
         font-size: 12px;
     }
 }
 
-@media screen and (max-width: 440px){
-    html{
+@media screen and (max-width: 440px) {
+    html {
         font-size: 10px;
     }
 }
