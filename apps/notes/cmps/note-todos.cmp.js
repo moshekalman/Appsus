@@ -5,7 +5,7 @@ export default {
     name: 'todos-note',
     template: `
     <section class="todo-container">
-        <h4 class="img-title todo-label">
+        <h4 class="img-title todo-label text-features">
         {{info.label}}
         </h4>
         <ul class="clean-list">
