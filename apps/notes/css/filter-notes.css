@@ -4,14 +4,17 @@
     padding-left: 20px;
     padding-right: 28px;
     width: 400px;
+    font-size: 1rem;
 }
 
 .search-box{
     width: fit-content;
     position: relative;
+    margin-right: 20px;
 }
 
 .search-btn{
+    width: 1.2rem;
     position: absolute;
     right:15px;
     top: 10px;

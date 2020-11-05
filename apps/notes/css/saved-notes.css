@@ -34,11 +34,11 @@
     height: fit-content;
 }
 
-.relative-label{
+.relative-label {
     position: relative;
 }
 
-.color-input{
+.color-input {
     position: absolute;
     top: 0;
     left: 0;
@@ -47,14 +47,27 @@
     z-index: -1;
 }
 
-.note-img{
+.note-img {
     max-width: 100%;
 }
 
-.done{
+.done {
     text-decoration: line-through;
 }
 
-h5,h6{
+h5,
+h6 {
     margin: 0;
+}
+
+h4 {
+    margin-top: 0;
+}
+
+.todo-label {
+    margin-right: 150px;
+}
+
+.todo-container {
+    padding: 15px;
 }

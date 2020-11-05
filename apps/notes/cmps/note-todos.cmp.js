@@ -1,16 +1,18 @@
+
+
 export default {
     props: ['info'],
-    name: 'text-note',
+    name: 'todo-note',
     template: `
-    <section>
-        <h4 class="img-title">
+    <section class="todo-container">
+        <h4 class="img-title todo-label">
         {{info.label}}
         </h4>
-        <ul>
+        <ul class="clean-list">
             <li v-for="(todo, index) in info.todos">
                 <label class="flex space-between">
                     <h5 :class="{done: todo.doneAt}">{{todo.txt}}</h5>
-                    <h6 v-if="todo.doneAt">{{currDate(todo.doneAt)}}</h6>
+                    <h5 v-if="todo.doneAt">{{currDate(todo.doneAt)}}</h5>
                     <input hidden @input="onToggleTodo(index)" class="clickable" type="checkbox">
                 </label>
             </li>
@@ -24,11 +26,9 @@ export default {
             if (!this.info.todos[idx].doneAt) this.info.todos[idx].doneAt = Date.now();
             else this.info.todos[idx].doneAt = null;
             console.log(this.info.todos[idx].doneAt)
-        }
-    },
-    computed: {
+        },
         currDate(dateInMs){
-            // return new Date(dateInMs).customFormat("#DD#/#MM# #hh#:#mm#")
+            return new Date(dateInMs).toLocaleString()
         }
     },
 }
