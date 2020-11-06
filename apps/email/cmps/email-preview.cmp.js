@@ -6,8 +6,8 @@ export default {
     template: `
     <section @click="clicked" class="email-preview" >
         <p class="sender-name" :class="{readed: email.readed}"><span>From:</span> {{email.sender}}</p>
-        <p class="addressee-name" :class="{readed: email.readed}"><span>To:</span> {{email.addressee}}</p>
-        <p class="content" :class="{readed: email.readed}"><span>{{email.subject}}:</span> {{email.content}}</p>
+        <!-- <p class="addressee-name" :class="{readed: email.readed}"><span>To:</span> {{email.addressee}}</p> -->
+        <p class="content" :class="{readed: email.readed}"><span>{{email.subject}}:</span> {{shortContent}}</p>
         <section>
             <p class="date-at">{{timeToPresent}}</p>
             <div @click.stop="onRemove">
@@ -24,9 +24,9 @@ export default {
     `,
     data() {
         return {
+            shortContent: null,
             timeToPresent: null,
             saveBtn: 'save',
-            // readed: false
         }
     },
     computed: {
@@ -41,8 +41,6 @@ export default {
             emailService.remove(this.email.id)
         },
         onAddToSaved() {
-            console.log('hi');
-            // this.email.saved = !this.email.saved
             if (this.saveBtn === 'save') this.saveBtn = 'unsave'
             else this.saveBtn = 'save'
             emailService.addToSaved(this.email)
@@ -58,12 +56,17 @@ export default {
             } else {
                 this.timeToPresent = time.toJSON().slice(0, 10).split('-').reverse().join('/')
             }
+        },
+        getShortContent() {
+            const content = JSON.parse(JSON.stringify(this.email.content))
+            this.shortContent = content.substring(0, 40) + '...'
         }
     },
     created() {
         if (!this.email.saved) this.saveBtn = 'save'
         else this.saveBtn = 'unsave'
         this.getdateAt()
+        this.getShortContent()
     },
     components: {
         emailService

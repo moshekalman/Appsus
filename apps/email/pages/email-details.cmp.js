@@ -1,4 +1,7 @@
 import { emailService } from '../services/email-service.js'
+import { eventBus } from '../../../js/services/event-bus-services.js';
+
+
 
 export default {
     name: 'email-details',
@@ -13,9 +16,8 @@ export default {
                 <p class="content">{{email.content}}</p>
             </section>
             <section class="btns">
-                    <button @click="back">back</button>
-                    <button @click ="onReplay">Replay</button>
-                    <button>Answer</button>
+                    <button class="email-btn" @click="back">back</button>
+                    <button class="email-btn" @click ="onReplay">Replay</button>
             </section>
         </section>
     `,
@@ -27,7 +29,8 @@ export default {
     },
     methods: {
         onReplay() {
-            this.$emit('replayEmail', this.email)
+            eventBus.$emit('replayEmail', this.email)
+                // this.$emit('replayEmail', this.email)
         },
         getDatePresent(email) {
             this.timeToPresent = emailService.getDateAt(email)

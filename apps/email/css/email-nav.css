@@ -17,8 +17,44 @@ button:hover {
     margin: 5px;
 }
 
+.email-app nav .hamburger {
+    /* display: none; */
+}
+
 .email-app nav .active {
     color: #F79E02;
     border: 1.5px #F79E02 solid;
     background-color: #0074e1af;
+}
+
+@media screen and (max-width: 470px) {
+    .email-app nav:not(.hamburger) {
+        display: none;
+        width: 100px;
+        position: absolute;
+        z-index: 1;
+    }
+    .email-nav {
+        position: relative;
+    }
+    .email-nav button {
+        margin: 5px;
+        background-color: #0074e1
+    }
+    /* .email-app nav button {
+        width: 70px;
+    } */
+    .email-app nav .hamburger {
+        display: block;
+        width: fit-content;
+    }
+}
+
+@media screen and (min-width: 470px) {
+    .email-app .hamburger {
+        display: none;
+    }
+    .email-app nav:not(.hamburger) {
+        display: flex;
+    }
 }

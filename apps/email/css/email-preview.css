@@ -21,6 +21,10 @@
     margin: 2px;
 }
 
+.email-preview:hover {
+    cursor: pointer;
+}
+
 .email-preview>* {
     padding: 0 10px;
 }
@@ -31,7 +35,7 @@
 }
 
 .email-preview span {
-    font-size: 0.875rem;
+    font-size: 0.675rem;
     font-family: OpenSanSB;
     color: #676565;
 }
@@ -46,11 +50,32 @@
     flex-grow: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 52%;
+}
+
+.sender-name {
+    width: 30%
 }
 
 .readed {
     font-family: inherit;
     color: rgb(82, 80, 80);
-    font-size: 0.675rem;
     font-family: OpenSans;
+}
+
+@media screen and (max-width: 950px) {
+    .email-preview {
+        max-width: 400px;
+        flex-direction: column;
+        font-size: 1.1rem;
+    }
+    .email-preview>* {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .email-preview {
+        max-width: 300px;
+    }
 }

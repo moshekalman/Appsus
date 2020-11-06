@@ -31,3 +31,9 @@
 .email-btn:hover {
     background-color: #0074e1af;
 }
+
+@media screen and (max-width: 470px) {
+    .email-app {
+        flex-direction: column;
+    }
+}

@@ -3,6 +3,11 @@
     display: flex;
 }
 
+.email-datails .btns>* {
+    margin: 3px;
+    width: 70px;
+}
+
 .email-datails section {
     display: flex;
     flex-direction: column;
