@@ -10,7 +10,7 @@ export default {
                         <li><router-link to="/email" exact>Email</router-link></li>
                         <li><router-link to="/notes" exact>Notes</router-link></li>
                         <li><router-link to="/" exact>Books</router-link></li>
-                        <li><router-link to="/" exact>About</router-link></li>
+                        <li><router-link to="/about" exact>About</router-link></li>
                     </ul>
                 </nav>
             </div>

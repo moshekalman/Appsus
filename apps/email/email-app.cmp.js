@@ -1,5 +1,7 @@
 // import emailList from './pages/email-list.cmp.js'
 import emailAdd from './pages/email-add.cmp.js'
+import { eventBus } from '../../js/services/event-bus-services.js';
+
 import emailFilter from './cmps/email-filter.cmp.js'
 import emailNav from './cmps/email-nav.cmp.js'
 import { emailService } from './services/email-service.js'
@@ -15,7 +17,7 @@ export default {
                 <section class="list">
                     <router-view :emails="emailsToShow" />
                 </section>
-                <email-add v-if="isShowAddEmail" @send="isShowAddEmail = false" @closeEmailAdd="isShowAddEmail = false" />
+                <email-add :emailToReply="replayedEmail" @replayEmail="getReplayedEmail" v-if="isShowAddEmail" @send="isShowAddEmail = false" @closeEmailAdd="isShowAddEmail = false" />
             </main>
         </section>
     </section>
@@ -27,6 +29,7 @@ export default {
             isShowAddEmail: false,
             showOnlySaved: false,
             showOnlySent: false,
+            replayedEmail: null
         }
     },
     computed: {
@@ -76,6 +79,9 @@ export default {
         }
     },
     methods: {
+        getReplayedEmail(email) {
+            console.log(email)
+        },
         showSent() {
             this.showOnlySent = true
             this.showOnlySaved = false
@@ -102,6 +108,13 @@ export default {
     },
     created() {
         this.getEmailsAfterPromise()
+        this.replayedEmail = null
+        eventBus.$on('replayEmail', replayEmail => {
+            this.isShowAddEmail = true
+            console.log(replayEmail);
+            this.replayedEmail = replayEmail
+                // eventBus.$emit('replayedEmail', replayEmail)
+        })
     },
     components: {
         // emailList,

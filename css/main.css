@@ -1,9 +1,9 @@
 @import './cmps/header.css';
 @import './cmps/home-page.css';
+@import './cmps/about-page.css';
 @import './cmps/footer.css';
 @import '../apps/notes/css/notes.css';
 @import '../apps/email/css/email.css';
-
 @font-face {
     font-family: Anton;
     src: url(../assets/fonts/Anton-Regular.ttf)
@@ -52,7 +52,7 @@ body {
     flex-direction: column;
 }
 
-body>section{
+body>section {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -79,6 +79,7 @@ ul {
 .app {
     flex: 1;
 }
+
 
 /* Helpers */
 
@@ -110,12 +111,10 @@ ul {
     text-decoration: none;
 }
 
-
 @media screen and (max-width: 880px) {
     html {
         font-size: 14px;
     }
-
     .container {
         max-width: 800px;
     }

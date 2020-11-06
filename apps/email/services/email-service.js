@@ -10,7 +10,21 @@ export const emailService = {
     getById,
     addToSaved,
     sendEmail,
-    addToReaded
+    addToReaded,
+    getDateAt
+}
+
+function getDateAt(email) {
+    console.log(email);
+    const time = new Date(email.dateAt)
+    const currTime = new Date()
+    if (time.getDay() === currTime.getDay() &&
+        time.getMonth() === currTime.getMonth() &&
+        time.getFullYear() === currTime.getFullYear()) {
+        return `${time.getHours()}:${time.getMinutes()}`
+    } else {
+        return time.toJSON().slice(0, 10).split('-').reverse().join('/')
+    }
 }
 
 function _createEmails() {
