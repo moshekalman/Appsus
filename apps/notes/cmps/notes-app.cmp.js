@@ -11,16 +11,17 @@ export default {
     <section class="notes-container container flex column">
         <div class="add-note flex space-between align-center">
             <add-note v-if="currCmp" :cmp="currCmp" @onSaveNote="saveNote"></add-note>
-            <div class="select-note-type flex space-bewteen">
+            <div class="select-note-type flex space-bewteen align-center">
                 <div :class="{selected: activeType === 0}" @click="changeNoteType(0)"><i class="type-icn fas fa-font"></i></div>
                 <div :class="{selected: activeType === 1}" @click="changeNoteType(1)"><i class="type-icn far fa-image"></i></div>
+                <div :class="{selected: activeType === 3}" @click="changeNoteType(3)"><i class="type-icn fab fa-youtube"></i></div>
                 <div :class="{selected: activeType === 2}" @click="changeNoteType(2)"><i class="type-icn fas fa-list"></i></div>
             </div>
         </div>
         <filter-notes @filtered="onFilter" />
         <section v-if="notes" class="notes-box">
             <h2 v-if="notes.length" class="">Saved Notes</h2>
-                <div class="notes-container flex align-center" >
+                <div class="notes-gallery flex align-center" >
                     <saved-note @emitColorChange="onChangeColor" @emitBgcChange="onChangeBgColor" :note="note" 
                     @onDeleteEv="onDeleteNote" @onEditEv="onEditNote" 
                     v-for="note in notesToShow" :key="note.id"> </saved-note>
@@ -69,10 +70,10 @@ export default {
     computed: {
         notesToShow() {
             if(!this.notes) return
-            if (!this.filterBy) return this.notes;
-            return this.notes.filter(note => {
+            if (!this.filterBy) return this.notes.filter(note => !note.isPinned);
+            return this.notes.filter(note => !note.isPinned).filter(note => {
                 if (note.type === 'noteText') return note.info.txt.toLowerCase().includes(this.filterBy);
-                if (note.type === 'noteImg') return note.info.title.toLowerCase().includes(this.filterBy);
+                if (note.type === 'noteImg' || note.type === 'noteVid') return note.info.title.toLowerCase().includes(this.filterBy);
                 if (note.type === 'noteTodos') return note.info.label.toLowerCase().includes(this.filterBy);
             });
         },

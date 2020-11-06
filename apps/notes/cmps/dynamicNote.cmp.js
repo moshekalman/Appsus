@@ -3,12 +3,14 @@ export const noteTypes = {
     cmps: [
         {
             type: "noteText",
+            isPinned: false,
             info: {
                 txt: ''
             }
         },
         {
             type: "noteImg",
+            isPinned: false,
             info: {
                 url: '',
                 title: ''
@@ -16,9 +18,18 @@ export const noteTypes = {
         },
         {
             type: "noteTodos",
+            isPinned: false,
             info: {
                 label: '',
                 todos: []
+            }
+        },
+        {
+            type: "noteVid",
+            isPinned: false,
+            info: {
+                url: '',
+                title: ''
             }
         },
 

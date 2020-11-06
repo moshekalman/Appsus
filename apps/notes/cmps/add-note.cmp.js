@@ -10,7 +10,8 @@ export default {
         </form>
         <form @submit.prevent="emitNote">
             <input :placeholder="placeHolder" v-model="txt" class="note-text" required>
-            <input v-if="cmp.type==='noteImg'"  placeholder="Enter Img Title..." v-model="title" class="note-text" required>
+            <input v-if="cmp.type==='noteImg'"  placeholder="Enter Image Title..." v-model="title" class="note-text" required>
+            <input v-if="cmp.type==='noteVid'"  placeholder="Enter Video Title..." v-model="title" class="note-text" required>
             <button class="note-btn save-btn">Save</button>
         </form>
 
@@ -35,7 +36,7 @@ export default {
         emitNote() {
             if (this.txt === '') return;
             if (this.cmp.type === 'noteText') this.cmp.info.txt = this.txt;
-            if (this.cmp.type === 'noteImg') {
+            if (this.cmp.type === 'noteImg' || this.cmp.type === 'noteVid') {
                 this.cmp.info.url = this.txt;
                 this.cmp.info.title = this.title;
                 this.title = '';
@@ -62,12 +63,14 @@ export default {
             if (this.cmp.type === 'noteText') this.placeHolder = "Enter Text...";
             else if (this.cmp.type === 'noteImg') this.placeHolder = "Enter Img Url...";
             else if (this.cmp.type === 'noteTodos') this.placeHolder = "Enter Label For Your Todos...";
+            else if (this.cmp.type === 'noteVid') this.placeHolder = "Enter Video Url...";
         }
     },
     created() {
         console.log(this.cmp);
         if (this.cmp.type === 'noteText') this.placeHolder = "Enter Text...";
-        else if (this.cmp.type === 'noteImg') this.placeHolder = "Enter Img Url...";
+        else if (this.cmp.type === 'noteImg') this.placeHolder = "Enter Image Url...";
         else if (this.cmp.type === 'noteTodos') this.placeHolder = "Enter Label For Your Todos...";
+        else if (this.cmp.type === 'noteVid') this.placeHolder = "Enter Video Url...";
     },
 };

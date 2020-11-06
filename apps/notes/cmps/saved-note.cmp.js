@@ -1,12 +1,13 @@
 import noteText from './note-text.cmp.js';
 import noteImg from './note-img.cmp.js';
 import noteTodos from './note-todos.cmp.js';
+import noteVid from './note-video.cmp.js';
 
 export default {
     props: ['note'],
     name: 'saved-note',
     template: `
-    <section class="saved-note flex column align-center" :style="{backgroundColor:bgColor, color}">
+    <section :class="isText ? textClass : frameClass" class="flex column align-center" :style="{backgroundColor:bgColor, color}">
         <div class="saved-text">
             <component :is="note.type" :info="note.info" :id="note.id"></component>
         </div>
@@ -28,7 +29,10 @@ export default {
     data() {
         return {
             bgColor: null,
-            color: null
+            color: null,
+            isText: true,
+            textClass: 'saved-note',
+            frameClass: 'saved-frame'
         };
     },
     methods: {
@@ -48,12 +52,14 @@ export default {
     components: {
         noteText,
         noteImg,
-        noteTodos
+        noteTodos,
+        noteVid
     },
     created() {
         if (this.note.style) {
             if (this.note.style.bgc) this.bgColor = this.note.style.bgc;
             if (this.note.style.color) this.color = this.note.style.color;
         }
+        if (this.note.type === 'noteImg' || this.note.type === 'noteVid') this.isText = false;
     },
 };
