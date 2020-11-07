@@ -1,6 +1,52 @@
 .about-page {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    flex:1;
+}
+
+.about-container{
+    padding: 1.2rem;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: column;
+}
+.about-container>*{
+    width: 100%;
+}
+
+.about-us{
+    font-size: 1.3rem;
+    color:#F79E02;
+}
+
+.about-us-info{
+overflow: hidden;
+word-break: break-line;
+max-width: 60%;
+}
+
+.about-header{
+    font-size: 1.7rem;
+    color:#F79E02;
+}
+
+.about-image{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    border: 2px solid #F79E02;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 660px){
+    .about-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+    }
+    .about-header{
+        font-size: 1.7rem;
+        text-align: center;
+    }
 }

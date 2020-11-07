@@ -21,33 +21,58 @@ function _getNotes() {
     else return [
         {
             type: "noteText",
+            id: _makeId(),
             isPinned: false,
             info: {
-                txt: 'My'
+                txt: 'Nadavs new phone: 054-222-3353'
+            },
+            style: {
+                bgc: '#F79E2E',
+                color: '#0074E1'
             }
         },
         {
             type: "noteImg",
+            id: _makeId(),
             isPinned: false,
             info: {
-                url: '',
-                title: ''
+                url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGQwdOZQsFiWRozjKrWHU_qwevJAzvgYIPeQ&usqp=CAU',
+                title: 'Fluffy was hot yesterday!'
+            },
+            style: {
+                bgc: '#a93',
+                color: '#fff'
             }
         },
         {
             type: "noteTodos",
-            isPinned: false,
+            id: _makeId(),
+            isPinned: true,
             info: {
-                label: '',
-                todos: []
+                label: 'Yahavs Birthday Party',
+                todos: [
+                    { txt: 'Buy a cake', doneAt: 1604769371724 },
+                    { txt: 'Buy candeles', doneAt: 1604549371724 },
+                    { txt: 'Order catering', doneAt: '' },
+                    { txt: 'make the cookies', doneAt: '' },
+                ]
+            },
+            style: {
+                bgc: '#eee',
+                color: '#31f'
             }
         },
         {
             type: "noteVid",
+            id: _makeId(),
             isPinned: false,
             info: {
-                url: '',
-                title: ''
+                url: 'https://www.youtube.com/watch?v=qQzdAsjWGPg',
+                title: 'Add To Classic Playlist!'
+            },
+            style: {
+                bgc: '#eeb',
+                color: '#f4f'
             }
         },
 
@@ -118,10 +143,10 @@ function editTodoById(id, info) {
         });
 }
 
-function changePinnedStatus(isPinned,id){
+function changePinnedStatus(isPinned, id) {
     getNoteById(id)
-    .then(res => {
-        res.isPinned = isPinned;
-        storageService.saveToLocalStorage(NOTES_KEY, gNotes);
-    });
+        .then(res => {
+            res.isPinned = isPinned;
+            storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+        });
 }

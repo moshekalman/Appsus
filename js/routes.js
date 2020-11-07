@@ -38,7 +38,7 @@ const myRoutes = [{
                 component: aboutMoshe
             },
             {
-                path: 'nadav',
+                path: ':nadav?',
                 component: aboutNadav
             }
         ]

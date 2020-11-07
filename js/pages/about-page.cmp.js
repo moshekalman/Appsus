@@ -2,12 +2,14 @@ export default {
     name: 'about-page',
     template: `
      <section class="about-page">
-        <h1>about us...</h1>
+        <h2 class="about-us">About us...</h2>
         <nav>
             <button @click="toMoshe" class="note-btn">Moshe</button> | 
             <button @click="toNadav" class="note-btn">Nadav</button>
         </nav>
-        <router-view></router-view>
+        <div class="container">
+            <router-view></router-view>
+        </div>
     </section>
     `,
     methods: {
