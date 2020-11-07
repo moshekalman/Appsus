@@ -1,4 +1,5 @@
-.notes-container,.notes-gallery {
+.notes-container,
+.notes-gallery {
     flex-wrap: wrap;
 }
 
@@ -6,11 +7,12 @@
 .saved-note {
     color: rgb(75, 75, 75);
     background-color: rgb(255, 255, 255);
-    padding: 20px;
+    padding: 1.4rem;
     max-width: 30%;
     height: fit-content;
-    border-radius: 20px;
-    margin: 10px;
+    border-radius: 1.4rem;
+    margin: 0.6rem;
+    position: relative;
 }
 
 .saved-frame {
@@ -20,6 +22,7 @@
     max-width: 60%;
     border-radius: 20px;
     margin: 10px;
+    position: relative;
 }
 
 .edit-btn {
@@ -29,13 +32,18 @@
 
 .edit-btns {
     margin-top: 10px;
+    border-radius: 0.2rem;
+    padding: 0.2rem;
     opacity: 0;
     transition: .2s;
     width: 100px;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .saved-note:hover>.edit-btns,
-.saved-frame:hover>.edit-btns {
+.saved-frame:hover>.edit-btns,
+.saved-note:hover>.pin,
+.saved-frame:hover>.pin {
     opacity: 1;
 }
 
@@ -80,20 +88,49 @@ h4 {
 
 .todo-container {
     max-width: 100%;
-    padding: 15px;
 }
 
-.text-features{
+.todo-container h5 {
+    margin-right: 0.5rem;
+}
+
+.text-features {
     overflow: hidden;
     overflow-wrap: break-word;
+    margin-top: 1rem;
 }
 
-.light-text{
+.light-text {
     font-family: OpenSansL;
 }
 
-.video-note{
+.video-note {
     width: 400px;
     height: 300px;
     border: none;
+}
+
+.pin {
+    color: #0074e154;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: .2s;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.8rem;
+    opacity: 0;
+}
+
+.pin:hover {
+    color: #0074e1;
+    font-size: 1.8rem;
+}
+
+.solid {
+    color: #0074e1;
+    opacity: 1;
+}
+
+.pinned {
+    order: -1;
 }

@@ -9,7 +9,8 @@ export const noteService = {
     editNoteById,
     changeBgColor,
     changeColor,
-    editTodoById
+    editTodoById,
+    changePinnedStatus
 };
 
 const NOTES_KEY = 'notesDB';
@@ -84,3 +85,10 @@ function editTodoById(id, info) {
         });
 }
 
+function changePinnedStatus(isPinned,id){
+    getNoteById(id)
+    .then(res => {
+        res.isPinned = isPinned;
+        storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+    });
+}
