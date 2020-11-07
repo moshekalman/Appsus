@@ -10,14 +10,14 @@ export default {
     name: 'email-app',
     template: `
     <section class="email-app container">
-        <email-nav @openAddEmail="isShowAddEmail = true" @openShowSaved="showSaved" @openShowSent="showSent" @backToInbox="backToInbox" />
+        <email-nav @openAddEmail="openEmailAdd" @openShowSaved="showSaved" @openShowSent="showSent" @backToInbox="backToInbox" />
         <section class="content">
             <email-filter v-if="emails" @doFilter="setFilter" />
             <main>
                 <section class="list">
                     <router-view :emails="emailsToShow" />
                 </section>
-                <email-add :emailToReply="replayedEmail" v-if="isShowAddEmail" @send="isShowAddEmail = false" @closeEmailAdd="isShowAddEmail = false" />
+                <email-add :emailToReply="replayedEmail" v-if="isShowAddEmail" @send="closeEmailAdd" @closeEmailAdd="closeEmailAdd" />
             </main>
         </section>
     </section>
@@ -79,6 +79,14 @@ export default {
         }
     },
     methods: {
+        openEmailAdd() {
+            this.replayedEmail = null
+            this.isShowAddEmail = true
+        },
+        closeEmailAdd() {
+            this.isShowAddEmail = false
+            this.$router.push('/email')
+        },
         showSent() {
             this.showOnlySent = true
             this.showOnlySaved = false
