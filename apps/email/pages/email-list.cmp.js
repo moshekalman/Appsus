@@ -18,6 +18,7 @@ export default {
         emailClicked(currEmail) {
             currEmail.readed = true
                 // this.$emit('clicked', currEmail)
+            console.log(currEmail);
             this.$router.push(`/email/email-details/${currEmail.id}`)
         }
     },

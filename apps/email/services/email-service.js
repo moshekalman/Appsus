@@ -21,7 +21,8 @@ function getDateAt(email) {
     if (time.getDay() === currTime.getDay() &&
         time.getMonth() === currTime.getMonth() &&
         time.getFullYear() === currTime.getFullYear()) {
-        return `${time.getHours()}:${time.getMinutes()}`
+        const padMins = time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes()
+        return `${time.getHours()}:${padMins}`
     } else {
         return time.toJSON().slice(0, 10).split('-').reverse().join('/')
     }
@@ -32,7 +33,7 @@ function _createEmails() {
         return storageService.loadFromLocalStorage(STORAGE_KEY_INBOX);
     }
     const emails = [{
-            id: 111,
+            id: 'aaaaa',
             sender: 'Alon (alonkh@neto.net.il)',
             addressee: 'Me (nadavkomo@gmail.com)',
             subject: 'hello world',
@@ -43,7 +44,7 @@ function _createEmails() {
             sent: false
         },
         {
-            id: 222,
+            id: 'bbbbb',
             sender: 'Moshe Kalman (moshiko555@walla.com)',
             addressee: 'Me (nadavkomo@gmail.com)',
             subject: 'visit me',
@@ -55,7 +56,7 @@ function _createEmails() {
 
         },
         {
-            id: 333,
+            id: 'ccccc',
             sender: 'Paolo Groppi(paolo123@walla.com)',
             addressee: 'Me (nadavkomo@gmail.com)',
             subject: 'good morning!',
@@ -66,7 +67,7 @@ function _createEmails() {
             sent: false
         },
         {
-            id: 444,
+            id: 'ddddd',
             sender: 'Alon (alonkh@neto.net.il)',
             addressee: 'Me(nadavkomo@gmail.com)',
             subject: 'hello world',
@@ -77,7 +78,7 @@ function _createEmails() {
             sent: false
         },
         {
-            id: 555,
+            id: 'eeeee',
             sender: 'Moshe Kalman (moshiko555@walla.com)',
             addressee: 'Me (nadavkomo@gmail.com)',
             subject: 'call me',
@@ -89,7 +90,7 @@ function _createEmails() {
 
         },
         {
-            id: 666,
+            id: 'fffff',
             sender: 'Paolo Groppi(paolo123@walla.com)',
             addressee: 'Me (nadavkomo@gmail.com)',
             subject: 'good morning!',
@@ -131,7 +132,7 @@ function _getIdxById(id) {
 function getById(id) {
     console.log(id);
     console.log(gEmails);
-    const email = gEmails.find(currEmail => currEmail.id === +id)
+    const email = gEmails.find(currEmail => currEmail.id === id)
     console.log(email);
     return Promise.resolve(email)
 }
@@ -174,5 +175,6 @@ function sendEmail(email) {
     var addedEmail = email
     addedEmail.id = _makeId()
     gEmails.push(addedEmail)
+    console.log(gEmails);
     storageService.saveToLocalStorage(STORAGE_KEY_INBOX, gEmails)
 }
