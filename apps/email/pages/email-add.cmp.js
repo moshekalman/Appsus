@@ -64,7 +64,7 @@ export default {
         if (this.emailToReply) {
             console.log('hi');
             const copyEmailToReplay = JSON.parse(JSON.stringify(this.emailToReply))
-            copyEmailToReplay.content = '\n' + copyEmailToReplay.content
+            copyEmailToReplay.content = copyEmailToReplay.content + '\n'
             this.email = copyEmailToReplay
             this.email.addressee = JSON.parse(JSON.stringify(this.emailToReply.sender))
             this.email.subject = `Re: ${copyEmailToReplay.subject}`

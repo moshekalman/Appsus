@@ -15,6 +15,7 @@ button:hover {
 .email-app nav button {
     padding: 5px;
     margin: 5px;
+    width: 75px;
 }
 
 .email-app nav .hamburger {
