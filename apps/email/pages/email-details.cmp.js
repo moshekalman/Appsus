@@ -9,8 +9,9 @@ export default {
         <section v-if="email" class="email-datails">
             <section>
                 <h2 class="subject">{{email.subject}}</h2>
+                <h3>To: {{email.addressee}}</h3>
                 <header class="head-details">
-                    <h3>{{email.sender}}</h3>
+                    <h3>From: {{email.sender}}</h3>
                     <h3>{{timeToPresent}}</h3>
                 </header>
                 <p class="content">{{email.content}}</p>

@@ -19,7 +19,7 @@ export default {
     `,
     data() {
         return {
-            showNav: false
+            showNav: true
         }
     },
     methods: {
@@ -40,7 +40,7 @@ export default {
         }
     },
     created() {
-        this.toggleMainNav()
+        // this.toggleMainNav()
     }
 
 }
