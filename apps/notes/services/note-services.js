@@ -9,7 +9,8 @@ export const noteService = {
     editNoteById,
     changeBgColor,
     changeColor,
-    editTodoById
+    editTodoById,
+    changePinnedStatus
 };
 
 const NOTES_KEY = 'notesDB';
@@ -17,7 +18,40 @@ var gNotes = _getNotes();
 
 function _getNotes() {
     if (storageService.loadFromLocalStorage(NOTES_KEY)) return storageService.loadFromLocalStorage(NOTES_KEY);
-    else return [];
+    else return [
+        {
+            type: "noteText",
+            isPinned: false,
+            info: {
+                txt: 'My'
+            }
+        },
+        {
+            type: "noteImg",
+            isPinned: false,
+            info: {
+                url: '',
+                title: ''
+            }
+        },
+        {
+            type: "noteTodos",
+            isPinned: false,
+            info: {
+                label: '',
+                todos: []
+            }
+        },
+        {
+            type: "noteVid",
+            isPinned: false,
+            info: {
+                url: '',
+                title: ''
+            }
+        },
+
+    ];
 }
 
 function getNotes() {
@@ -84,3 +118,10 @@ function editTodoById(id, info) {
         });
 }
 
+function changePinnedStatus(isPinned,id){
+    getNoteById(id)
+    .then(res => {
+        res.isPinned = isPinned;
+        storageService.saveToLocalStorage(NOTES_KEY, gNotes);
+    });
+}

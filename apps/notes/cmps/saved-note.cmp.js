@@ -7,7 +7,10 @@ export default {
     props: ['note'],
     name: 'saved-note',
     template: `
-    <section :class="isText ? textClass : frameClass" class="flex column align-center" :style="{backgroundColor:bgColor, color}">
+    <section :class="[isText ? textClass : frameClass,{pinned: note.isPinned}]" class="flex column align-center" :style="{backgroundColor:bgColor, color}">
+    <div class="pin" @click="emmitTogglePin(note.id)" :class="{solid: note.isPinned}">
+    <i class="fas fa-thumbtack"></i>
+    </div>
         <div class="saved-text">
             <component :is="note.type" :info="note.info" :id="note.id"></component>
         </div>
@@ -32,7 +35,7 @@ export default {
             color: null,
             isText: true,
             textClass: 'saved-note',
-            frameClass: 'saved-frame'
+            frameClass: 'saved-frame',
         };
     },
     methods: {
@@ -47,6 +50,10 @@ export default {
         },
         onEmitChangeColor() {
             this.$emit('emitColorChange', { color: this.color, id: this.note.id });
+        },
+        emmitTogglePin(id){
+            this.note.isPinned = !this.note.isPinned
+            this.$emit('onTogglePin', {isPinned:this.note.isPinned, id});
         }
     },
     components: {
@@ -56,6 +63,7 @@ export default {
         noteVid
     },
     created() {
+        console.log(this.note.isPinned)
         if (this.note.style) {
             if (this.note.style.bgc) this.bgColor = this.note.style.bgc;
             if (this.note.style.color) this.color = this.note.style.color;

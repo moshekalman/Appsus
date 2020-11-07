@@ -21,9 +21,9 @@ export default {
         <filter-notes @filtered="onFilter" />
         <section v-if="notes" class="notes-box">
             <h2 v-if="notes.length" class="">Saved Notes</h2>
-                <div class="notes-gallery flex align-center" >
+                <div class="notes-gallery flex align-center">
                     <saved-note @emitColorChange="onChangeColor" @emitBgcChange="onChangeBgColor" :note="note" 
-                    @onDeleteEv="onDeleteNote" @onEditEv="onEditNote" 
+                    @onDeleteEv="onDeleteNote" @onEditEv="onEditNote" @onTogglePin="togglePin"
                     v-for="note in notesToShow" :key="note.id"> </saved-note>
                 </div>
         </section>
@@ -65,13 +65,17 @@ export default {
         changeNoteType(idx) {
             this.currCmp = noteTypes.cmps[idx];
             this.activeType = idx;
+        },
+        togglePin({ isPinned, id }) {
+            console.log(isPinned, id)
+            noteService.changePinnedStatus(isPinned, id);
         }
     },
     computed: {
         notesToShow() {
-            if(!this.notes) return
-            if (!this.filterBy) return this.notes.filter(note => !note.isPinned);
-            return this.notes.filter(note => !note.isPinned).filter(note => {
+            if (!this.notes) return;
+            if (!this.filterBy) return this.notes;
+            return this.notes.filter(note => {
                 if (note.type === 'noteText') return note.info.txt.toLowerCase().includes(this.filterBy);
                 if (note.type === 'noteImg' || note.type === 'noteVid') return note.info.title.toLowerCase().includes(this.filterBy);
                 if (note.type === 'noteTodos') return note.info.label.toLowerCase().includes(this.filterBy);
