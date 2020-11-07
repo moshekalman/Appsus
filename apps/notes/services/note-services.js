@@ -18,7 +18,40 @@ var gNotes = _getNotes();
 
 function _getNotes() {
     if (storageService.loadFromLocalStorage(NOTES_KEY)) return storageService.loadFromLocalStorage(NOTES_KEY);
-    else return [];
+    else return [
+        {
+            type: "noteText",
+            isPinned: false,
+            info: {
+                txt: 'My'
+            }
+        },
+        {
+            type: "noteImg",
+            isPinned: false,
+            info: {
+                url: '',
+                title: ''
+            }
+        },
+        {
+            type: "noteTodos",
+            isPinned: false,
+            info: {
+                label: '',
+                todos: []
+            }
+        },
+        {
+            type: "noteVid",
+            isPinned: false,
+            info: {
+                url: '',
+                title: ''
+            }
+        },
+
+    ];
 }
 
 function getNotes() {
