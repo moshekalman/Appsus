@@ -113,7 +113,7 @@ ul {
 
 @media screen and (max-width: 880px) {
     html {
-        font-size: 14px;
+        font-size: 13px;
     }
     .container {
         max-width: 800px;
@@ -122,12 +122,12 @@ ul {
 
 @media screen and (max-width: 660px) {
     html {
-        font-size: 12px;
+        font-size: 10px;
     }
 }
 
 @media screen and (max-width: 440px) {
     html {
-        font-size: 10px;
+        font-size: 8px;
     }
 }
