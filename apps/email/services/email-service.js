@@ -174,5 +174,6 @@ function sendEmail(email) {
     var addedEmail = email
     addedEmail.id = _makeId()
     gEmails.push(addedEmail)
+    console.log(gEmails);
     storageService.saveToLocalStorage(STORAGE_KEY_INBOX, gEmails)
 }

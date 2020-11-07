@@ -47,11 +47,14 @@ export default {
             this.email.dateAt = Date.now()
         },
         onSendEmail() {
-            this.emailToReply = null
+            // this.emailToReply = null
+            console.log(this.email);
             this.$emit('send')
             this.getCurrTime()
             emailService.sendEmail(this.email)
-            this.email = { sender: null, addressee: null, content: null, readed: false, dateAt: null }
+            this.$router.push('/email')
+            this.email = { sender: 'Me (nadavkomo@gmail.com)', addressee: null, subject: null, content: null, readed: false, dateAt: null, sent: true }
+                // this.email = { sender: null, addressee: null, content: null, readed: false, dateAt: null }
         }
     },
     created() {
@@ -59,9 +62,13 @@ export default {
         if (this.emailToReply) {
             const copyEmailToReplay = JSON.parse(JSON.stringify(this.emailToReply))
             this.email = copyEmailToReplay
-            this.email.addressee = copyEmailToReplay.sender
+            this.email.addressee = JSON.parse(JSON.stringify(this.emailToReply.sender))
             this.email.subject = `Re: ${copyEmailToReplay.subject}`
+            this.email.sent = true
+            this.email.readed = false
+            this.email.sender = JSON.parse(JSON.stringify(this.emailToReply.addressee))
         }
+        console.log(this.email);
         // eventBus.$on('replayEmail', replayEmail => {
         //     console.log('hi');
         //     // const timeToPresent = emailService.getDateAt(replayEmail)

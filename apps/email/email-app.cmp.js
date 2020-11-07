@@ -17,7 +17,7 @@ export default {
                 <section class="list">
                     <router-view :emails="emailsToShow" />
                 </section>
-                <email-add :emailToReply="replayedEmail" @replayEmail="getReplayedEmail" v-if="isShowAddEmail" @send="isShowAddEmail = false" @closeEmailAdd="isShowAddEmail = false" />
+                <email-add :emailToReply="replayedEmail" v-if="isShowAddEmail" @send="isShowAddEmail = false" @closeEmailAdd="isShowAddEmail = false" />
             </main>
         </section>
     </section>
@@ -79,9 +79,6 @@ export default {
         }
     },
     methods: {
-        getReplayedEmail(email) {
-            console.log(email)
-        },
         showSent() {
             this.showOnlySent = true
             this.showOnlySaved = false
@@ -108,7 +105,7 @@ export default {
     },
     created() {
         this.getEmailsAfterPromise()
-        this.replayedEmail = null
+            // this.replayedEmail = null
         eventBus.$on('replayEmail', replayEmail => {
             this.isShowAddEmail = true
             console.log(replayEmail);
