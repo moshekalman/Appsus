@@ -68,7 +68,7 @@ export default {
             this.activeType = idx;
         },
         togglePin({ isPinned, id }) {
-            console.log(isPinned, id)
+            console.log(isPinned, id);
             noteService.changePinnedStatus(isPinned, id);
         }
     },
@@ -91,6 +91,9 @@ export default {
     },
     created() {
         noteService.getNotes()
-            .then(res => this.notes = res);
+            .then(res => {
+                this.notes = res;
+                console.log(this.notes);
+            });
     },
 };

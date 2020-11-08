@@ -65,7 +65,6 @@ export default {
         noteAudio
     },
     created() {
-        console.log(this.note.isPinned)
         if (this.note.style) {
             if (this.note.style.bgc) this.bgColor = this.note.style.bgc;
             if (this.note.style.color) this.color = this.note.style.color;
