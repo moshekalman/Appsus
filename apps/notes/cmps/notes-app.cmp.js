@@ -16,6 +16,7 @@ export default {
                 <div :class="{selected: activeType === 1}" @click="changeNoteType(1)"><i class="type-icn far fa-image"></i></div>
                 <div :class="{selected: activeType === 3}" @click="changeNoteType(3)"><i class="type-icn fab fa-youtube"></i></div>
                 <div :class="{selected: activeType === 2}" @click="changeNoteType(2)"><i class="type-icn fas fa-list"></i></div>
+                <div :class="{selected: activeType === 4}" @click="changeNoteType(4)"><i class="type-icn fas fa-volume-up"></i></div>
             </div>
         </div>
         <filter-notes @filtered="onFilter" />
@@ -77,8 +78,8 @@ export default {
             if (!this.filterBy) return this.notes;
             return this.notes.filter(note => {
                 if (note.type === 'noteText') return note.info.txt.toLowerCase().includes(this.filterBy);
-                if (note.type === 'noteImg' || note.type === 'noteVid') return note.info.title.toLowerCase().includes(this.filterBy);
-                if (note.type === 'noteTodos') return note.info.label.toLowerCase().includes(this.filterBy);
+                else if (note.type === 'noteTodos') return note.info.label.toLowerCase().includes(this.filterBy);
+                else return note.info.title.toLowerCase().includes(this.filterBy);
             });
         },
     },

@@ -2,6 +2,7 @@ import noteText from './note-text.cmp.js';
 import noteImg from './note-img.cmp.js';
 import noteTodos from './note-todos.cmp.js';
 import noteVid from './note-video.cmp.js';
+import noteAudio from './note-audio.cmp.js';
 
 export default {
     props: ['note'],
@@ -60,7 +61,8 @@ export default {
         noteText,
         noteImg,
         noteTodos,
-        noteVid
+        noteVid,
+        noteAudio
     },
     created() {
         console.log(this.note.isPinned)
@@ -68,6 +70,6 @@ export default {
             if (this.note.style.bgc) this.bgColor = this.note.style.bgc;
             if (this.note.style.color) this.color = this.note.style.color;
         }
-        if (this.note.type === 'noteImg' || this.note.type === 'noteVid') this.isText = false;
+        if (this.note.type === 'noteImg' || this.note.type === 'noteVid' || this.note.type === 'noteAudio') this.isText = false;
     },
 };

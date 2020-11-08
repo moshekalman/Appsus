@@ -32,6 +32,14 @@ export const noteTypes = {
                 title: ''
             }
         },
+        {
+            type: "noteAudio",
+            isPinned: false,
+            info: {
+                url: '',
+                title: ''
+            }
+        },
 
     ]
 

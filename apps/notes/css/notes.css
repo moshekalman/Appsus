@@ -13,6 +13,11 @@ input {
 
 }
 
+audio{
+    outline: none;
+    max-width: 100%;
+}
+
 button {
     cursor: pointer;
 }
@@ -50,6 +55,7 @@ button {
     padding: 1rem 1.2rem 0 1.2rem;
     flex: 1;
     width: 100%;
+    min-height: fit-content;
 }
 
 .selected>* {
@@ -65,28 +71,25 @@ button {
     grid-gap: 10px;
 }
 
-@media screen and (max-width: 880px){
-    .video-note{
-        width: 260px;
-        height: 200px;
+@media screen and (max-width: 880px) {
+    .video-note {
+        max-width: 100%;
+        max-height: 230px;
     }
+
     .search-btn {
         top: 1.1rem;
+    }
+
+    .select-note-type {
+        flex-direction: column;
+        justify-items: center;
     }
 }
 
 @media screen and (max-width: 660px) {
 
-    .video-note{
-        width: 195px;
-        height: 150px;
-    }
-
-    .select-note-type{
-        flex-direction: column;
-        justify-items: center;
-    }
-    .select-note-type>*{
+    .select-note-type>* {
         padding: 5px;
         margin: auto;
     }
@@ -114,8 +117,12 @@ button {
         width: 40%;
     }
 
-    .notes-box>h2{
+    .notes-box>h2 {
         text-align: center;
+    }
+
+    .video-note {
+        max-height: 200px;
     }
 }
 
@@ -123,7 +130,35 @@ button {
     .search-bar {
         width: 300px;
     }
-    .notes-gallery{
+
+    .notes-gallery {
         justify-content: center;
+    }
+
+    .note-img{
+        max-width: 100%;
+    }
+    .video-note {
+        max-height: 150px;
+    }
+    
+}
+
+@media screen and (max-width: 330px) {
+    .search-bar {
+        width: 220px;
+    }
+
+    .search-btn {
+        top: 1.25rem;
+    }
+
+    .notes-gallery {
+        justify-content: center;
+    }
+
+    .saved-note,
+    .saved-frame {
+        max-width: 100%;
     }
 }

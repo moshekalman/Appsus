@@ -8,7 +8,7 @@
     color: rgb(75, 75, 75);
     background-color: rgb(255, 255, 255);
     padding: 1.4rem;
-    max-width: 30%;
+    max-width: 38%;
     height: fit-content;
     border-radius: 1.4rem;
     margin: 0.6rem;
@@ -106,7 +106,7 @@ h4 {
 
 .video-note {
     width: 400px;
-    height: 300px;
+    height: 260px;
     border: none;
 }
 

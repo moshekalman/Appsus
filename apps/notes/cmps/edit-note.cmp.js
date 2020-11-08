@@ -13,7 +13,7 @@ export default {
                     <input placeholder="Text here..." v-model="note.info.txt" class="note-text" required>
                 </form>
             </div>
-            <div v-if="note.type === 'noteImg' || note.type === 'noteVid'">
+            <div v-if="note.type === 'noteImg' || note.type === 'noteVid' || note.type === 'noteAudio'">
             <form @submit.prevent="emitEdit">
                 <h4>URL:</h4 >
                 <input placeholder="Url Here..." v-model="note.info.url" class="note-text" required>

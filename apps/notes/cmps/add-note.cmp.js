@@ -12,6 +12,7 @@ export default {
             <input :placeholder="placeHolder" v-model="txt" class="note-text" required>
             <input v-if="cmp.type==='noteImg'"  placeholder="Enter Image Title..." v-model="title" class="note-text" required>
             <input v-if="cmp.type==='noteVid'"  placeholder="Enter Video Title..." v-model="title" class="note-text" required>
+            <input v-if="cmp.type==='noteAudio'"  placeholder="Enter Audio Title..." v-model="title" class="note-text" required>
             <button class="note-btn save-btn">Save</button>
         </form>
 
@@ -35,18 +36,18 @@ export default {
     methods: {
         emitNote() {
             if (this.txt === '') return;
-            if (this.cmp.type === 'noteText') this.cmp.info.txt = this.txt;
-            if (this.cmp.type === 'noteImg' || this.cmp.type === 'noteVid') {
-                this.cmp.info.url = this.txt;
-                this.cmp.info.title = this.title;
-                this.title = '';
-            }
-            if (this.cmp.type === 'noteTodos') {
+            else if (this.cmp.type === 'noteText') this.cmp.info.txt = this.txt;
+            else if (this.cmp.type === 'noteTodos') {
                 if (!this.todos.length) return;
                 this.cmp.info.label = this.txt;
                 this.cmp.info.todos = this.todos;
                 this.todos = [];
                 this.currTodo = '';
+            }
+            else {
+                this.cmp.info.url = this.txt;
+                this.cmp.info.title = this.title;
+                this.title = '';
             }
             this.$emit('onSaveNote', JSON.parse(JSON.stringify(this.cmp)));
             this.txt = '';
@@ -64,6 +65,7 @@ export default {
             else if (this.cmp.type === 'noteImg') this.placeHolder = "Enter Img Url...";
             else if (this.cmp.type === 'noteTodos') this.placeHolder = "Enter Label For Your Todos...";
             else if (this.cmp.type === 'noteVid') this.placeHolder = "Enter Video Url...";
+            else if (this.cmp.type === 'noteAudio') this.placeHolder = "Enter Audio Url...";
         }
     },
     created() {
@@ -72,5 +74,6 @@ export default {
         else if (this.cmp.type === 'noteImg') this.placeHolder = "Enter Image Url...";
         else if (this.cmp.type === 'noteTodos') this.placeHolder = "Enter Label For Your Todos...";
         else if (this.cmp.type === 'noteVid') this.placeHolder = "Enter Video Url...";
+        else if (this.cmp.type === 'noteAudio') this.placeHolder = "Enter Audio Url...";
     },
 };
