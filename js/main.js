@@ -1,4 +1,4 @@
-
+import userMsg from '../apps/books/js/cmps/user-msg.cmp.js'
 import headerCmp from './cmps/header.cmp.js'
 import footerCmp from './cmps/footer.cmp.js'
 import {myRouter} from './routes.js'
@@ -14,6 +14,7 @@ const app = new Vue({
     </section>
     `,
     components:{
+        userMsg,
         headerCmp,
         footerCmp
     }

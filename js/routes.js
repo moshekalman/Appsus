@@ -6,6 +6,8 @@ import emailDetails from '../apps/email/pages/email-details.cmp.js'
 import aboutPage from './pages/about-page.cmp.js'
 import aboutMoshe from './cmps/about-moshe.cmp.js'
 import aboutNadav from './cmps/about-nadav.cmp.js'
+import bookApp from '../apps/books/js/pages/book-app.cmp.js'
+import bookDetails from '../apps/books/js/pages/book-details.cmp.js'
 
 // import notesApp from
 
@@ -42,6 +44,14 @@ const myRoutes = [{
                 component: aboutNadav
             }
         ]
+    },
+    {
+        path: '/book',
+        component: bookApp
+    },
+    {
+        path: '/book/:bookId',
+        component: bookDetails
     },
 ];
 

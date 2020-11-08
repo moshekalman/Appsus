@@ -1,0 +1,194 @@
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+input{
+    outline: none;
+}
+
+
+/* book-list */
+
+.book-list{
+    padding: 1rem;
+}
+
+.book-list ul {
+    padding: 1rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;
+}
+
+.book-list ul li {
+    display: inline-block;
+    background-color: lightblue;
+    padding: 8px;
+    margin: 4px;
+    max-width: 250px;
+    height: 458px;
+    border-radius: 25px;
+}
+
+.book-list ul li:hover {
+    cursor: pointer;
+}
+
+
+/* book-preview */
+
+.previewClass {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.previewClass>* {
+    margin: 0;
+    padding: 8px;
+}
+
+.previewClass img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* book-filter */
+
+.book-filter {
+    margin-top: 10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: rgba(34, 117, 184, 0.294);
+    padding: 0.6rem;
+    border-radius: 0.8rem;
+}
+
+.book-filter input{
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+
+/* book-details */
+
+.detailsClass {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailsClass>* {
+    padding: 3px;
+}
+
+.detailsClass ul {
+    margin: 0
+}
+
+.detailsClass img {
+    height: 500px;
+    width: 250px;
+}
+
+.detailsClass .publishedDate {
+    font-family: lora-bold, sans-serif;
+    font-size: 20px;
+}
+
+
+/* long-text */
+
+.bookDesc {
+    max-width: 500px;
+}
+
+.bookDesc span span {
+    font-family: lora-bold, sans-serif;
+    font-size: 18px;
+}
+
+
+/* book-reviews */
+
+.book-reviews {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-reviews li {
+    list-style-type: none;
+    margin: 0 10px;
+    padding: 4px;
+    border-radius: 12px;
+    background-image: linear-gradient(to right, rgb(181, 231, 247), rgb(198, 235, 240));
+}
+
+
+/* review-section */
+
+.review-section form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rate-section {
+    color: ivory;
+    padding: 1rem;
+}
+
+.rate-section a {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.rate-section a:hover {
+    color: gold;
+}
+
+.checked {
+    color: gold;
+}
+
+.user-msg {
+    position: fixed;
+    top: 20px;
+    right: 5px;
+    background-color: gold;
+    border-radius: 12px;
+    border: 2px lightblue solid;
+}
+
+
+/* footer */
+
+footer {
+    height: 70px;
+    max-width: 100%;
+    background-color: lightblue;
+    border-radius: 12px;
+}
+
+.main-footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 5px
+}
+
+.footer-rights {
+    text-align: center;
+    margin: auto;
+    color: #000;
+}
