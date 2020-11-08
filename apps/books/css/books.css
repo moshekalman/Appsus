@@ -168,27 +168,3 @@ input{
     border-radius: 12px;
     border: 2px lightblue solid;
 }
-
-
-/* footer */
-
-footer {
-    height: 70px;
-    max-width: 100%;
-    background-color: lightblue;
-    border-radius: 12px;
-}
-
-.main-footer {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
-    padding: 5px
-}
-
-.footer-rights {
-    text-align: center;
-    margin: auto;
-    color: #000;
-}

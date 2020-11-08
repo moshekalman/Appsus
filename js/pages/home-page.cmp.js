@@ -20,15 +20,24 @@ export default {
                     </div>
                     <h3>Go To <span @click="goNotes">Notes</span></h3>
                 </div>
+                <div>   
+                    <div @click="goBooks" class="router-icn">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Go To <span @click="goBooks">Books</span></h3>
+                </div>
         </div>
     </section>
     `,
     methods: {
-        goEmail(){
-            this.$router.push('/email')
+        goEmail() {
+            this.$router.push('/email');
         },
-        goNotes(){
-            this.$router.push('/notes')
+        goNotes() {
+            this.$router.push('/notes');
+        },
+        goNotes() {
+            this.$router.push('/book');
         }
     },
 };
